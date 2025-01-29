@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1738003083 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1738003084 0
+["pdflatex"] 1738174203 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1738174204 2
   "/etc/texmf/web2c/texmf.cnf" 1726526631 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alexander/.texlive2022/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk" 1728918362 7808 05b98e5b882e13f4c3bd9945641c7071 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1640468671 2914 8283dfc24eaf1964346f843d7605c2b0 ""
@@ -8,7 +8,9 @@
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm" 1227036886 560 39fd35b5e4a6aca3672660cc548ba860 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm" 1227036886 556 9c04e2d7f25768427a52589d484d3199 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm6.tfm" 1227036886 560 4c5ff0e6c23877f3f630ae9d8ef92c6e ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm" 1227036886 560 ab71d518408103034050efd8ebc8a16a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm8.tfm" 1227036886 560 2e80f8a1cb59527f57d99bb5fccd0f3c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXMI.tfm" 1572128992 1408 ef71a9098da4d5a1a85b5920860b6731 ""
@@ -160,12 +162,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1728051094 4623455 fa0568a71dd9a288d6c226ee477506c6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1728051177 7878617 fbf09dfaeda4c4724b9feea1d0639bb0 ""
-  "AlexanderLong-ChiDyn2024.aux" 1738003084 3774 10ce5b725f99beafb60dee8322f3ac5f "pdflatex"
-  "AlexanderLong-ChiDyn2024.out" 1738003084 559 03930b77a4db2bdcc0a1793e9ea53083 "pdflatex"
-  "AlexanderLong-ChiDyn2024.tex" 1738003083 16425 ce3bc46f37c14932aeb1fbcc173a7684 ""
+  "AlexanderLong-ChiDyn2024.aux" 1738174204 4811 2e369d961b335515e19c63474e4af33f "pdflatex"
+  "AlexanderLong-ChiDyn2024.out" 1738174204 1094 3c602faa05a866a673b02682db86dec9 "pdflatex"
+  "AlexanderLong-ChiDyn2024.tex" 1738174202 21674 ee1ae440a59b100da7c5e2c50ae46641 ""
   "HighRes.png" 1738000888 106649 cbd2ec2d7778176cc4c1d324d9d657e6 ""
   "LowRes.png" 1738000904 178245 b2c3c024bd2d070b27aa9e921cdf4bac ""
   "PoSlogo.pdf" 1434382136 18116 9695eaee2f7b2bcd896df8f45468280e ""
+  "SRG-Converge-Double.pdf" 1738169661 50759 29e118821827f89d01d5a2038e04923a ""
   "kinematics3He.pdf" 1737995067 65635 b1fdaaf981c8ae952bf074751db9d1e4 ""
   "pos.sty" 1728081860 18773 1f6c60a4b59d135c46833262207700ff ""
   (generated)

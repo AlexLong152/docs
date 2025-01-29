@@ -8,6 +8,7 @@
 
 \usepackage{bbm}
 \newcommand{\dd}{\mathrm{d}}
+\newcommand{\wtil}[1]{\widetilde{#1}}
 \newcommand{\deint}[2]{\dd^{#1}\;\!\!#2\;}
 \newcommand{\br}[1]{\left\langle #1 \right |}
 \newcommand{\kt}[1]{\left| #1 \right \rangle}
@@ -256,57 +257,144 @@ As a result, the total file size for the two nucleon densities are on
 the order of a few GB per energy and angle, whereas those of the one
 nucleon densities are on the order of a few KB.
 Importantly, $\rho$ can be computed generically from a nuclear
-potential, such as the chiral SMS potential 
-without reference to the kernel $\hat{O}_3$ or $\hat{O}_{12}$ \cite{Reinert2018}.
+potential, such as the chiral SMS potential
+without reference to the kernel $\hat{O}_3$ or $\hat{O}_{12}$
+\cite{Reinert2018}.
 \ques{Maybe this is too much detail.}
 
 \section{SRG Transform}
-Previous work using the transition density method has looked at $\HeT$ and $\HeF$ but to extend this $\LiS$ involves many body iterations which are much more complicated, and numerically expensive to compute \cite{hammer2020, hammer4He}. 
-To this end a similarity renormalization group (SRG) transformation is used \cite{SRG}.
-In general a nuclear potential, such as the chiral SMS potential does not fall off quickly for high momentum meaning we would have to extend the cutoff much further than we would like which in turn increases computation cost.
-The SRG transform is a unitary transformation that allows us to shovel all the dependence into the low momentum region making calculation for $A=6$ possible.
-The SRG transformation can be thought of as a local averaging or smoothing out of the potential, resulting in decreased "resolution" has the SRG is applied.
+Previous work using the transition density method has looked at
+$\HeT$ and $\HeF$ but to extend this $\LiS$ involves many body
+iterations which are much more complicated, and numerically expensive
+to compute \cite{hammer2020, hammer4He}.
+To this end a similarity renormalization group (SRG) transformation
+is used \cite{SRG}.
+In general a nuclear potential, such as the chiral SMS potential does
+not fall off quickly for high momentum meaning we would have to
+extend the cutoff much further than we would like which in turn
+increases computation cost.
+The SRG transform is a unitary transformation that allows us to
+shovel all the dependence into the low momentum region making
+calculation for $A=6$ possible.
+The SRG transformation can be thought of as a local averaging or
+smoothing out of the potential, resulting in decreased "resolution"
+has the SRG is applied.
 \begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
     \centering
-    \begin{subfigure}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{HighRes.png}
-        \caption{High Resolution (bare, unevolved potential) }
-        \label{fig:highres}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{LowRes.png}
-        \caption{Low Resolution (evolved)}
-        \label{fig:lowres}
-    \end{subfigure}
-    \caption{Nuclear potentials $V(k,k')$. Figures from Kai Hebeler: ``Chiral Effective Field Theory and Nuclear Forces:
-overview and applications'' presentation at TALENT school at MITP 2022}
-    \label{fig:SRGtransform}
+    \includegraphics[width=\linewidth]{HighRes.png}
+    \caption{High Resolution (bare, unevolved potential) }
+    \label{fig:highres}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{LowRes.png}
+    \caption{Low Resolution (evolved)}
+    \label{fig:lowres}
+  \end{subfigure}
+  \caption{Nuclear potentials $V(k,k')$. Figures from Kai Hebeler:
+    ``Chiral Effective Field Theory and Nuclear Forces:
+  overview and applications'' presentation at TALENT school at MITP 2022}
+  \label{fig:SRGtransform}
 \end{figure}
-In the unevolved, high resolution figure \ref{fig:highres} one can see the potential does not go to zero quickly whereas once the transformation is applied in figure \ref{fig:lowres} it does. As a result a cutoff can be made at $k,k'=2 \mathrm{fm}^{-1}$ without losing much accuracy. In the example above, if the unevolved potential had to be consider up to $k,k'=5$, this means an efficiency gain of $(5/2)^2=6.25$.
+In the unevolved, high resolution figure \ref{fig:highres} one can
+see the potential does not go to zero quickly whereas once the
+transformation is applied in figure \ref{fig:lowres} it does. As a
+result a cutoff can be made at $k,k'=2 \mathrm{fm}^{-1}$ without
+losing much accuracy. In the example above, if the unevolved
+potential had to be consider up to $k,k'=5$, this means an efficiency
+gain of $(5/2)^2=6.25$.
 
-However, this creates another problem; the SRG transform creates a change in physical meaning of the momenta free variables.
-To understand this, let us first consider an example the reader is certainly more familiar with - a Fourier transformation which changes a potential from position to momentum space.
+However, this creates another problem; the SRG transform creates a
+change in physical meaning of the momenta free variables.
+To understand this, let us first consider an example the reader is
+certainly more familiar with - a Fourier transformation which changes
+a potential from position to momentum space.
 
 \begin{equation}
-    V(\vec{r},\vec{r}\,')= \br{r'} V \kt{r}=
-                          \int \dd^3p\, \dd^3p' \brkt{r'}{p'} \br{p'}V\kt{p} \brkt{p}{r}\\
-                          =V(\vec{p},\vec{p}\,')
+  V(\vec{r},\vec{r}\,')= \br{r'} V \kt{r}=
+  \int \dd^3p\, \dd^3p' \brkt{r'}{p'} \br{p'}V\kt{p} \brkt{p}{r}\\
+  =V(\vec{p},\vec{p}\,')
 \end{equation}
-After the transform our free variables have different physical meaning. In fact, any unitary transform, also transforms the coordinates.
+After the transform our free variables have different physical
+meaning. In fact, any unitary transform, also transforms the coordinates.
 \begin{align}
-    \br{p'}V\kt{p} &= \br{p'} \mathbbm{1} V \mathbbm{1} \kt{p}\nonumber\\
-                   &= \br{p'} U^\dag U V U^\dag U \kt{p}\nonumber\\
-                   &= \left(\br{p'} U^\dag\right)\;\left( U V U^\dag\right)\;\left( U \kt{p}\right)\\
-                   &= \br{\widetilde{p}\,'} V_{eff} \kt{\widetilde{p}}=V_{eff}(\widetilde{p},\widetilde{p}\,')\nonumber
+  \br{p'}V\kt{p} &= \br{p'} \mathbbm{1} V \mathbbm{1} \kt{p}\nonumber\\
+  &= \br{p'} U^\dag U V U^\dag U \kt{p}\nonumber\\
+  &= \left(\br{p'} U^\dag\right)\;\left( U V U^\dag\right)\;\left( U
+  \kt{p}\right)\\
+  &= \br{\widetilde{p}\,'} V_{eff}
+  \kt{\widetilde{p}}=V_{eff}(\widetilde{p},\widetilde{p}\,')\nonumber
 \end{align}
-in the case of the SRG transform this has significant consequences.
-\section{Uncertainty}
-Integrations blah blah... Convergence and cutoffs blah blah...
+So calling the free variables in an SRG transformed potential
+``momenta'' is abuse of notation.
+They are not physical states in the sense that $\wtil{p}=50 \MeV$
+does not correspond to a state of $50 \MeV$ that an experimentalist can prepare.
+The Lagrangians that generate the Feynman diagrams in the kernel
+however have dependence on physical momenta.
+To solve this, previous work with SRG transformations has transformed
+the Lagrangians into the SRG evolved space, however in
+the case of the density formalism this would mean adding SRG
+information into the kernel, thereby breaking kernel-density independence.
+Additionally, the SRG transformation can take many different forms,
+changed over the years, and we wish to allow for these developments
+without having to re-write the kernel code.
+Therefore Xiang-Xiang Sun \etal have chosen to apply an inverse
+transformation to the densities.
+This work was begun with the highest nucleon number system we can
+calculate densities for without an SRG transformation, which is
+$\HeF$. In this way we have gained confidence in $\HeF$ before moving
+to the more complex $\LiS$.
+\ques{Are they not publishing a paper on this? How do I credit
+Xiang-Xiang effectively}
 
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=\linewidth]{SRG-Converge-Double.pdf}
+    \caption{A convergence plot for $\HeF$\, Compton scattering
+    showing the relative deviation of the matrix elements (ME) of the reaction.}
+    \label{fig:SRGConverge4He}
+  \end{center}
+\end{figure}
+In figure \ref{fig:SRGConverge4He} we see the effectiveness of the results.
+The SRG transformation uses the harmonic oscillator basis, and the
+value `omegaH` on the $x$-axis is the width of the harmonic
+oscillator potential, and `Ntotmax` is the total number of states
+used.\ques{$\LiS$ results go here maybe? And talk about extraction of polarizabilites}
+
+\ques{How much more do we talk about? We have many more results since
+  the actual chiral dynamics presentation. Also do we really want to
+put that "preliminary" plot with the fuzzy values on here?}
+\section{Extension to Other Interactions}
+Beyond Compton scattering we are interested in extending the density
+formalism to other processes. In particular pion-photoproduction, and
+pion-pion scattering are of interest.
+Fortunately their kernels share remarkable similarity since there are
+only so many ways for one particle to go in and one to go out.\ques{I
+  don't want to include that diagram since I stole the figures from
+somewhere, but I don't remember where}
+
+\subsection{Pion-Photoproduction}
+For the one-body kernel we use the results of pion-photoproduction on a single nucleon, $\gamma N \to \pi N$ which has
+been studied extensively.
+Its differential cross section can be decomposed in terms of the
+electric and magnetic multipoles $E_{l\pm}, M_{l\pm}$ which are angle
+independent  \cite{pionphoto}.
+There have been many different experimental results over the years
+which measure these multipoles to high order and with good precision
+such as `Unified Chew-Mandelstam SAID analysis...' Workman \etal \cite{multipolePionPion}.
+The resulting scattering matrices $\mathcal{M}$ are exactly what enters as $\hat{O}_3$ equation (\ref{onebodyOrig}). 
+This solves a significant problem since calculation of the one-body pion-photoproduction kernel to high accuracy directly through Feynman diagrams requires including many terms in the chiral expansion due to the proximity of the $\Delta(1232)$ resonance at $\sim 200\MeV$ \cite{chiralpionphoto}.
+
+The two-body contributions do not decompose into multipole interactions, and therefore must be calculated directly through Feynman diagrams. At threshold energy the kernel has been analyzed before by Lenkewitz \etal \cite{L2011, L2013}. We must extend this to finite energy, and to higher order if necessary.
+\ques{We have a stable result now, do we include this information? We didn't have this at the time of the conference.}
+\subsection{Pion-Pion scattering and other reactions}
+Talk about we want to look at pion-pion, and we could look at Dark matter.
 \section{Conclusion}
+
+
 \begin{thebibliography}{99}
   \bibitem{hammer2020}
   H. W. Grie{\ss}hammer, J. A. McGovern, A. Nogga, and D. R.
@@ -324,11 +412,35 @@ Integrations blah blah... Convergence and cutoffs blah blah...
   \bibitem{hammer4He}
   H. W. Griesshammer, J. Liao, J. A. McGovern, A. Nogga, and D. R.
   Phillips, ``Compton Scattering on 4He with Nuclear One- and
-  Two-Body Densities,'' arXiv preprint, 2024. Available:
+  Two-Body Densities,''
   \href{https://arxiv.org/abs/2401.16995}{arXiv:2401.16995}.
 
   \bibitem{SRG}
-S. Szpigel and R. J. Perry, ``The Similarity Renormalization Group,'' arXiv preprint, 2000. Available: \href{https://arxiv.org/abs/hep-ph/0009071}{arXiv:hep-ph/0009071}.
+  S. Szpigel and R. J. Perry, ``The Similarity Renormalization
+  Group,''.
+  \href{https://arxiv.org/abs/hep-ph/0009071}{arXiv:hep-ph/0009071}.
+
+  \bibitem{pionphoto}
+  R. L. Walker, ``Phenomenological Analysis of Single-Pion
+  Photoproduction,'' \textit{Phys. Rev.}, vol. 182, no. 5, pp.
+  1729--1748, Jun. 1969. DOI:
+  \href{https://link.aps.org/doi/10.1103/PhysRev.182.1729}{10.1103/PhysRev.182.1729}.
+
+  \bibitem{multipolePionPion}
+  R. L. Workman, M. W. Paris, W. J. Briscoe, and I. I. Strakovsky,
+  ``Unified Chew-Mandelstam SAID analysis of pion photoproduction
+  data,'' \textit{Phys. Rev. C}, vol. 86, no. 1, p. 015202, Jul.
+  2012. DOI:
+  \href{https://link.aps.org/doi/10.1103/PhysRevC.86.015202}{10.1103/PhysRevC.86.015202}.
+
+\bibitem{chiralpionphoto}
+N. Rijneveen, A. M. Gasparyan, H. Krebs, and E. Epelbaum, ``Pion photoproduction in chiral perturbation theory with explicit treatment of the $\Delta(1232)$ resonance,''  \href{https://arxiv.org/abs/2108.01619}{arXiv:2108.01619}.
+
+\bibitem{L2011}
+M. Lenkewitz, E. Epelbaum, H.-W. Hammer, and U.-G. Meißner, ``Neutral pion photoproduction off $^3$H and $^3$He in chiral perturbation theory,'' \textit{Physics Letters B}, vol. 700, no. 5, pp. 365–368, Jun. 2011. DOI: \href{http://dx.doi.org/10.1016/j.physletb.2011.05.036}{10.1016/j.physletb.2011.05.036}.
+
+\bibitem{L2013}
+M. Lenkewitz, E. Epelbaum, H.-W. Hammer, and U.-G. Meißner, ``Threshold neutral pion photoproduction off the tri-nucleon to O(q⁴),'' \textit{The European Physical Journal A}, vol. 49, no. 2, Feb. 2013. DOI: \href{http://dx.doi.org/10.1140/epja/i2013-13020-1}{10.1140/epja/i2013-13020-1}.
 \end{thebibliography}
 
 \end{document}
