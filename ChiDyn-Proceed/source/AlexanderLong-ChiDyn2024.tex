@@ -35,8 +35,11 @@ in Light Nuclei}
 
 \author*[a]{Alexander Long}
 \author[a]{Harald Griesshammer}
+\author[b]{Andreas Nogga}
+\author[b]{Xiang-Xiang Sun}
 
 \affiliation[a]{The George Washington University\\ Washington DC USA}
+\affiliation[b]{Name of Andreas' institution here}
 % \affiliation[a]{Institution,\\
 %   Street number, City, Country}
 
@@ -45,7 +48,8 @@ in Light Nuclei}
 
 \emailAdd{alexlong@gwu.edu}
 \emailAdd{hgrie@gwu.edu}
-
+\emailAdd{a.nogga@fz-juelich.de}
+\emailAdd{x.sun@fz-juelich.de}
 \abstract{
   The dynamics of scattering on light nuclei is well understood, but
   calculation is numerically difficult using standard methods.
@@ -101,8 +105,8 @@ Figure \ref{fig:onetwobod} provides an example for the case $A=3$.
     \caption{Kinematics in the center of mass frame and quantum
       numbers for an $A=3$ system in the case of Compton scattering.
       Generalization to other reactions only changes the kind of
-      ingoing/outgoing probe. Top: one-body processes, center: two-body
-      processes, bottom: three-body processes. Green represents the
+      ingoing/outgoing probe. Top: one-body processes $\hat{O}_3$, center: two-body
+      processes$\hat{O}_{12}$, bottom: three-body processes$\hat{O}_{123}$. Green represents the
       densities, and red represents the kernels. Griesshammer \etal
     \cite{hammer2020}}
     \label{fig:onetwobod}
@@ -128,7 +132,7 @@ amplitude is given by
 where $M,M'$ is the spin of the target nucleus, and there are
 $\binom{A}{i}$ ways for a probe to hit $i$ nucleons. Fortunately
 $\chi$EFT provides a hierarchy of scales which predicts decreasing
-contributions for higher order terms for energies greater than $\sim 40 \MeV$.
+contributions for higher order terms for probe energies greater than $\sim 40 \MeV$.
 To this end we use only the first two terms
 \begin{equation}
   A_{M}^{M^{\prime} }(\bv{k}, \bv{q})=\binom{A}{1}\left\langle
@@ -155,13 +159,13 @@ spin-projection $M$. The momenta are $\bv{p}_{12}= \frac{1}{2}
 |\bv{p}_{1}|.$ Recall $\bv{k}_i$ are the individual nucleon momenta,
 and $\bv{k}$ is the probe momentum in the CM frame. The quantity
 $\alpha$ represents all the quantum numbers of the nucleons inside
-the nucleus~\cite{hammer2020}:
+the nucleus~\cite{hammer2020}
 \begin{equation}
   |\alpha\rangle=\left|\left[\left(l_{12} s_{12}\right)
   j_{12}\left(l_{3} s_{3}\right) j_{3}\right] J M,\left(t_{12}
   t_{3}\right) T M_{T}\right\rangle,
 \end{equation}
-where $s$, $l$ and $j$ are the spin, orbital and total angular
+Here $s$, $l$ and $j$ are the spin, orbital and total angular
 momentum respectively. The quantum number $s_3$ simply represent the
 spin of nucleon 3, whereas $s_{12}$ represents the total spin of the
 1-2 subsystem; the quantities $l_{12}$ and $j_{12}$ combine the 1-2
@@ -208,10 +212,10 @@ Symbolically, the matrix element $\hat{O}_3$ is:
     j_{12}^{\prime}\left(l_{3}^{\prime} s_{3}\right)
   j_{3}^{\prime}\right] J^{\prime} M^{\prime}\left(t_{12}^{\prime}
   t_{3}\right) T^{\prime} M_{T}\right| \hat{O}_{3}(\bv{k}, \bv{q})
-  \label{onebodyExplicit}\\
+  \label{onebodFull}\\
   &\qquad\qquad\left|p_{12} p_{3}\left[\left(l_{12} s_{12}\right)
   j_{12}\left(l_{3} s_{3}\right) j_{3}\right] J M\left(t_{12}
-  t_{3}\right) T M_{T}\right\rangle.\nonumber
+t_{3}\right) T M_{T}\right\rangle.\nonumber
 \end{align}
 The central result is that up to relativistic corrections, this can
 be written as:
@@ -234,7 +238,7 @@ $M'$. Its operator form is
   m_{3}^{s \prime}, t_{3} m_{3}^{t}\right\rangle
   \mathrm{e}^{\mathrm{i} \frac{2}{3} \bv{q} \cdot
   \bv{r}_{3}}\left\langle s_{3} m_{3}^{s}, t_{3}
-  m_{3}^{t}\right|\left. M\right\rangle\label{onebody}.
+  m_{3}^{t}\right|\left. M\right\rangle\label{onebodydens}.
 \end{equation}
 The two body case works similarly, and results in
 \begin{equation}
@@ -245,11 +249,12 @@ The two body case works similarly, and results in
   p_{12}\right) \rho_{\alpha_{12}^{\prime} \alpha_{12}}^{M_{T},
   M^{\prime} M}\left(p_{12}^{\prime}, p_{12} ; \bv{q}\right)\label{twobody}\;.
 \end{equation}
+This is the two-body equivalent to \eqref{onebodyOrig}.
+There is an expression analogous to \eqref{onebodFull} but, it is non-trivial and for our purposes non-enlightening.
 This two-body density $\rho_{\alpha_{12}^{\prime}
 \alpha_{12}}^{M_{T}, M^{\prime} M}$ is of course completely distinct
-from the one-body density and has a more involved expression
-equivalent to \eqref{onebody}.
-This two-body density can also be interpreted as a probability density.
+from the one-body density. 
+However, just like the one-body case it can also be interpreted as a probability density.
 It is dependent on the incoming and outgoing quantum numbers
 $\alpha_{12}$ and $\alpha_{12}'$ of the 1-2 system, and also on the
 relative momenta of the two nucleons which are integrated over.
@@ -264,13 +269,15 @@ without reference to the kernel $\hat{O}_3$ or $\hat{O}_{12}$
 
 \section{SRG Transform}
 Previous work using the transition density method has looked at
-$\HeT$ and $\HeF$ but to extend this $\LiS$ involves many body
-iterations which are much more complicated, and numerically expensive
-to compute \cite{hammer2020, hammer4He}.
+$\HeT$ and $\HeF$ but to extend this $\LiS$ ($A=6$) involves many body
+interactions which are much more complicated, and numerically expensive
+\cite{hammer2020, hammer4He}.
 To this end a similarity renormalization group (SRG) transformation
 is used \cite{SRG}.
+When using nuclear potentials, we approximate the potential to be zero 
+outside of a certain cutoff $\Lambda$, and therefore neglect it in our calculation.
 In general a nuclear potential, such as the chiral SMS potential does
-not fall off quickly for high momentum meaning we would have to
+not fall off quickly for high momenta meaning we would have to
 extend the cutoff much further than we would like which in turn
 increases computation cost.
 The SRG transform is a unitary transformation that allows us to
@@ -305,14 +312,13 @@ transformation is applied in figure \ref{fig:lowres} it does. As a
 result a cutoff can be made at $k,k'=2 \mathrm{fm}^{-1}$ without
 losing much accuracy. In the example above, if the unevolved
 potential had to be consider up to $k,k'=5$, this means an efficiency
-gain of $(5/2)^2=6.25$.
+gain proportional to the areas of each, for a factor of $(5/2)^2=6.25$.
 
 However, this creates another problem; the SRG transform creates a
 change in physical meaning of the momenta free variables.
 To understand this, let us first consider an example the reader is
 certainly more familiar with - a Fourier transformation which changes
 a potential from position to momentum space.
-
 \begin{equation}
   V(\vec{r},\vec{r}\,')= \br{r'} V \kt{r}=
   \int \dd^3p\, \dd^3p' \brkt{r'}{p'} \br{p'}V\kt{p} \brkt{p}{r}\\
@@ -331,14 +337,16 @@ meaning. In fact, any unitary transform, also transforms the coordinates.
 So calling the free variables in an SRG transformed potential
 ``momenta'' is abuse of notation.
 They are not physical states in the sense that $\wtil{p}=50 \MeV$
-does not correspond to a state of $50 \MeV$ that an experimentalist can prepare.
+does not correspond to a state of $50 \,\MeV$ an experimentalist can prepare.
 The Lagrangians that generate the Feynman diagrams in the kernel
-however have dependence on physical momenta.
+however have dependence on physical momenta and therefore we cannot directly use an SRG 
+evolved potential in the non-SRG evolved kernel.
 To solve this, previous work with SRG transformations has transformed
 the Lagrangians into the SRG evolved space, however in
 the case of the density formalism this would mean adding SRG
 information into the kernel, thereby breaking kernel-density independence.
-Additionally, the SRG transformation can take many different forms,
+Additionally, the SRG transformation can take many different forms; 
+the state of the art transformation has
 changed over the years, and we wish to allow for these developments
 without having to re-write the kernel code.
 Therefore Xiang-Xiang Sun \etal have chosen to apply an inverse
@@ -349,7 +357,6 @@ $\HeF$. In this way we have gained confidence in $\HeF$ before moving
 to the more complex $\LiS$.
 \ques{Are they not publishing a paper on this? How do I credit
 Xiang-Xiang effectively}
-
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=\linewidth]{SRG-Converge-Double.pdf}
@@ -358,40 +365,58 @@ Xiang-Xiang effectively}
     \label{fig:SRGConverge4He}
   \end{center}
 \end{figure}
-In figure \ref{fig:SRGConverge4He} we see the effectiveness of the results.
+In figure \ref{fig:SRGConverge4He} we see the effectiveness of the results in the $\HeF$ case.
 The SRG transformation uses the harmonic oscillator basis, and the
 value `omegaH` on the $x$-axis is the width of the harmonic
 oscillator potential, and `Ntotmax` is the total number of states
-used.\ques{$\LiS$ results go here maybe? And talk about extraction of polarizabilites}
-
+used.
+With this completed we have now moved to $\LiS$.
+This is of much interest experimentally since this target is solid at room temperature and does not decay, it is therefore 
+easy to place in a beam path.
+\ques{$\LiS$ results go here maybe?}
 \ques{How much more do we talk about? We have many more results since
   the actual chiral dynamics presentation. Also do we really want to
 put that "preliminary" plot with the fuzzy values on here?}
-\section{Extension to Other Interactions}
+\section{Analyzing Different Interactions}
+\subsection{Compton Scattering}
+Compton scattering allows for extraction of the nucleon polarizabilites.
+$\alpha_{E1}, \beta_{M1}$, a subject of much experimental interest. 
+These parameters quantify the stiffness of a nucleus, and enter in the Hamiltonian via
+\begin{equation}
+    \mathcal{H}=-4\pi \left( \frac{1}{2} \alpha_{E1} \bv{E}^2 + \frac{1}{2} \beta_{M1} \bv{H}^2\right)
+\end{equation}
+\ques{Can these parameters be extracted experimentally?}
+There are many experiments on $\LiS$, but as of yet there is no theory prediction, we seek to fill this gap \cite{60MeV,86MeV}.
+
 Beyond Compton scattering we are interested in extending the density
 formalism to other processes. In particular pion-photoproduction, and
 pion-pion scattering are of interest.
 Fortunately their kernels share remarkable similarity since there are
-only so many ways for one particle to go in and one to go out.\ques{I
-  don't want to include that diagram since I stole the figures from
+only so many ways for one particle to go in and one to go out.
+\ques{I don't want to include that diagram since I stole the figures from
 somewhere, but I don't remember where}
 
 \subsection{Pion-Photoproduction}
-For the one-body kernel we use the results of pion-photoproduction on a single nucleon, $\gamma N \to \pi N$ which has
+For the pion-photoproduction one-body kernel we use the results of scattering on a single nucleon, $\gamma N \to \pi N$ which has
 been studied extensively.
 Its differential cross section can be decomposed in terms of the
 electric and magnetic multipoles $E_{l\pm}, M_{l\pm}$ which are angle
 independent  \cite{pionphoto}.
-There have been many different experimental results over the years
+There have been many experimental results over the years
 which measure these multipoles to high order and with good precision
-such as `Unified Chew-Mandelstam SAID analysis...' Workman \etal \cite{multipolePionPion}.
-The resulting scattering matrices $\mathcal{M}$ are exactly what enters as $\hat{O}_3$ equation (\ref{onebodyOrig}). 
+such as ``Unified Chew-Mandelstam SAID analysis...'' Workman \etal \cite{multipolePionPion}.
+The scattering matrices $\mathcal{M}$ which result from this are exactly what enters as $\hat{O}_3$ in equation (\ref{onebodyOrig}). 
 This solves a significant problem since calculation of the one-body pion-photoproduction kernel to high accuracy directly through Feynman diagrams requires including many terms in the chiral expansion due to the proximity of the $\Delta(1232)$ resonance at $\sim 200\MeV$ \cite{chiralpionphoto}.
 
-The two-body contributions do not decompose into multipole interactions, and therefore must be calculated directly through Feynman diagrams. At threshold energy the kernel has been analyzed before by Lenkewitz \etal \cite{L2011, L2013}. We must extend this to finite energy, and to higher order if necessary.
+The two-body contributions do not easily decompose into multipole interactions, therefore we preform the calculation through expansions in the chiral Lagrangian and 
+At threshold energy this reaction kernel has been analyzed by Lenkewitz \etal \cite{L2011, L2013}.
+We must extend this to finite energy, and to higher order if necessary.
 \ques{We have a stable result now, do we include this information? We didn't have this at the time of the conference.}
 \subsection{Pion-Pion scattering and other reactions}
-Talk about we want to look at pion-pion, and we could look at Dark matter.
+The pion-pion scattering kernel is similar to the pion photoproduction kernel. Beane \etal has developed this kernel at threshold for both one-body and two-body interactions \cite{Beane2003}.
+We may extend this to finite energy. 
+When the pion-photoproduction and pion-pion scattering kernels have successfully been developed, we will instantly be able to calculate all of these reactions on targets previously analyzed in the density formalism since we already have produced the densities required.
+In particular, we will calculate all of these reactions with the targets $\HeT$, $\HeF$, and $\LiS$.
 \section{Conclusion}
 
 
@@ -440,7 +465,16 @@ N. Rijneveen, A. M. Gasparyan, H. Krebs, and E. Epelbaum, ``Pion photoproduction
 M. Lenkewitz, E. Epelbaum, H.-W. Hammer, and U.-G. Meißner, ``Neutral pion photoproduction off $^3$H and $^3$He in chiral perturbation theory,'' \textit{Physics Letters B}, vol. 700, no. 5, pp. 365–368, Jun. 2011. DOI: \href{http://dx.doi.org/10.1016/j.physletb.2011.05.036}{10.1016/j.physletb.2011.05.036}.
 
 \bibitem{L2013}
-M. Lenkewitz, E. Epelbaum, H.-W. Hammer, and U.-G. Meißner, ``Threshold neutral pion photoproduction off the tri-nucleon to O(q⁴),'' \textit{The European Physical Journal A}, vol. 49, no. 2, Feb. 2013. DOI: \href{http://dx.doi.org/10.1140/epja/i2013-13020-1}{10.1140/epja/i2013-13020-1}.
+M. Lenkewitz, E. Epelbaum, H.-W. Hammer, and U.-G. Meissner, ``Threshold neutral pion photoproduction off the tri-nucleon to $O(q^4)$,'' \textit{The European Physical Journal A}, vol. 49, no. 2, Feb. 2013. DOI: \href{http://dx.doi.org/10.1140/epja/i2013-13020-1}{10.1140/epja/i2013-13020-1}.
+
+\bibitem{86MeV}
+L. S. Myers, M. W. Ahmed, G. Feldman, A. Kafkarkou, D. P. Kendellen, I. Mazumdar, J. M. Mueller, M. H. Sikora, H. R. Weller, and W. R. Zimmerman, ``Compton scattering from $^{6}\mathrm{Li}$ at 86 MeV,'' \textit{Phys. Rev. C}, vol. 90, no. 2, p. 027603, Aug. 2014. DOI: \href{https://link.aps.org/doi/10.1103/PhysRevC.90.027603}{10.1103/PhysRevC.90.027603}.
+
+\bibitem{60MeV}
+L. S. Myers, M. W. Ahmed, G. Feldman, S. S. Henshaw, M. A. Kovash, J. M. Mueller, and H. R. Weller, ``Compton scattering from $^{6}$Li at 60 MeV,'' \textit{Phys. Rev. C}, vol. 86, no. 4, p. 044614, Oct. 2012. DOI: \href{https://link.aps.org/doi/10.1103/PhysRevC.86.044614}{10.1103/PhysRevC.86.044614}.
+
+\bibitem{Beane2003}
+S. R. Beane, V. Bernard, E. Epelbaum, U.-G. Meißner, and D. R. Phillips, ``The S-wave pion–nucleon scattering lengths from pionic atoms using effective field theory,'' \textit{Nuclear Physics A}, vol. 720, no. 3–4, pp. 399–415, Jun. 2003. DOI: \href{http://dx.doi.org/10.1016/S0375-9474(03)01008-X}{10.1016/S0375-9474(03)01008-X}.
 \end{thebibliography}
 
 \end{document}

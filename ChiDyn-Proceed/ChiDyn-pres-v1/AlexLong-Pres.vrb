@@ -1,0 +1,17 @@
+\frametitle{Details - 1 body}
+\begin{center}
+\includegraphics[scale=0.07]{kinematics3He-1bod.png}\\~\\
+\end{center}
+1 body contribution:
+\begin{align*}
+    \left\langle M^{\prime}\left|\hat{O}_{3}(\bv{k}, \bv{q})\right| M\right\rangle=\sum_{\substack{m_{3}^{s \prime}\, m_{3}^{s}\\m_3^t}}\hat{O}_{3}\left(m_{3}^{s \prime} m_{3}^{s}, m_{3}^{t} ;  \bv{k}, \bv{q}\right) \rho_{m_{3}^{s \prime} m_{3}^{s}}^{m_3^{t} M_{T}, M^{\prime} M}(\bv{k}, \bv{q})
+\end{align*}
+Example: Pion Photoproduction: $\hat{O}_3=\frac{1}{2} \vec{ \varepsilon}\cdot \vec{\sigma}_1$
+\begin{verbatim}
+do i=1, maxI
+    rho=readRho(i)
+    Result(Mz,Mzp)+= 0.5* rho*sigmax(m1p,m1)
+end do
+\end{verbatim}
+% Probe kernel: $\hat{O}_{3}$ quantum numbers of active nucleons change\\~\\
+% Density: $\rho_{m_{3}^{s \prime} m_{3}^{s}}^{m_3^{t} M_{T}, M^{\prime} M}$ involves spectator nucleons
