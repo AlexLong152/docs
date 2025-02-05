@@ -23,18 +23,22 @@
 \newcommand{\LiS}{{}^{6} \mathrm{Li} }
 \newcommand{\HeF}{{}^{4} \mathrm{He}}
 \newcommand{\HeT}{{}^{3} \mathrm{He}}
+\newcommand{\HThree}{{}^{3} \mathrm{H}}
 \newcommand{\HT}{{}^{2} \mathrm{H}}
 \newcommand\bv[1]{\vec{#1}}
 \newcommand{\ques}[1]{\color{red}\textit{ #1 }\color{black}}
 \newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 \newcommand{\MeV}{\mathrm{MeV}}
+\newcommand{\mev}{\mathrm{MeV}}
+\newcommand{\fm}{\mathrm{fm}}
+\newcommand{\fmin}{\mathrm{fm}^{-1}}
 
 \title{Scattering Observables from Few-Body Densities and Application
 in Light Nuclei}
 %% \ShortTitle{Short Title for header}
 
 \author*[a]{Alexander Long}
-\author[a]{Harald Griesshammer}
+\author[a]{Harald W. Grie{\ss}hammer}
 \author[b]{Andreas Nogga}
 \author[b]{Xiang-Xiang Sun}
 
@@ -51,22 +55,22 @@ in Light Nuclei}
 \emailAdd{a.nogga@fz-juelich.de}
 \emailAdd{x.sun@fz-juelich.de}
 \abstract{
-  The dynamics of scattering on light nuclei is well understood, but
+  The dynamics of scattering on light nuclei is well understood, but its
   calculation is numerically difficult using standard methods.
-  Fortunately using recent developments, the relevant quantities can
-  be factored into a product of the $n$-body transition densities and
+  Fortunately, using recent developments, the relevant quantities can
+  be factored into a product of the $n$-body transition density amplitude (TDA) and
   the interaction kernel of a chosen probe.
-  These  transition densities depend only on the target, and not the
+  These TDAs depend only on the target, and not the
   probe; they are calculated once and stored.
-  The kernels depend on only the probe and not the target.
+  The kernels depend on only the probe and not the target, moreover they can be reused for different targets.
   The calculation of the transition densities becomes numerically
   difficult for $n\ge4$, but we discuss a solution through use of a
   renormalization
   group transformation.
   This technique allows for extending the density transition method to $\HeF$
   and $\LiS$.
-  Throughout this work Compton scattering is used as test bed
-  but extension to pion-photoproduction is discussed as well.
+  Throughout this work, Compton scattering is used as test bed, since its kernel is well-developed,
+  but extension to pion-photoproduction and other reactions are discussed as well.
 }
 
 \FullConference{The 11th International Workshop on Chiral Dynamics (CD2024)\\
@@ -85,17 +89,21 @@ Ruhr University Bochum, Germany\\}
   information is needed here.
 }
 
-The transition density method was pioneered by Griesshammer \etal
+The transition density method was pioneered by Grie{\ss}hammer \etal\,
 \cite{hammer2020}.
-An incoming probe striking an $A$ body nucleus may interact with
-$1,2...A$ nucleons.
+We seek to analyze an incoming probe, interacting with an $A$ body target.
+This probe therefore, may interact with
+$1,2,...,A$ nucleons.
 The $n$ nucleons it interacts with we call \textit{active} and $A-n$
 it does not we call \textit{spectators}.
 The mathematical description of these two parts are completely
-separate; the active nucleons contribute to the kernel and spectator
+separate; the $n$ active nucleons contribute to the $n$-body kernel, and spectator
 nucleons contribute to the density.
+The $n$-body kernel represents the interaction in the idealized case where the probe interacts
+with only the $n$-body system. For example, the one-body kernel of Compton scattering contains exactly the 
+same contributions as Compton scattering off a Nucleon.
 The complete separation of these two parts means if one has access to
-$a$ different kernels and $b$ different nucleus descriptions, then
+$a$ different kernels and $b$ different TDAs, then
 $ab$ different results can be produced.
 Figure \ref{fig:onetwobod} provides an example for the case $A=3$.
 
@@ -106,8 +114,8 @@ Figure \ref{fig:onetwobod} provides an example for the case $A=3$.
       numbers for an $A=3$ system in the case of Compton scattering.
       Generalization to other reactions only changes the kind of
       ingoing/outgoing probe. Top: one-body processes $\hat{O}_3$, center: two-body
-      processes$\hat{O}_{12}$, bottom: three-body processes$\hat{O}_{123}$. Green represents the
-      densities, and red represents the kernels. Griesshammer \etal
+      processes $\hat{O}_{2}$, bottom: three-body processes $\hat{O}_{3}$. Green represents the
+      densities, and red represents the kernels. From Grie{\ss}hammer \etal
     \cite{hammer2020}}
     \label{fig:onetwobod}
   \end{center}
@@ -117,23 +125,24 @@ For scattering off an $A$ body nucleus, the total scattering
 amplitude is given by
 \begin{align}
   A_{M}^{M^{\prime} }(\bv{k}, \bv{q})&=\binom{A}{1}\left\langle
-  M^{\prime}\right|\hat{O}_{3}^{}(\bv{k}, \bv{q})\left|M\right
+  M^{\prime}\right|\hat{O}_{1}^{}(\bv{k}, \bv{q})\left|M\right
   \rangle + \binom{A}{2} \left\langle
-  M^{\prime}\right|\hat{O}_{12}^{}(\bv{k}, \bv{q}) \left|
+  M^{\prime}\right|\hat{O}_{2}^{}(\bv{k}, \bv{q}) \left|
   M\right\rangle\nonumber\\
   &+ \binom{A}{3}\left\langle
-  M^{\prime}\right|\hat{O}_{123}^{}(\bv{k}, \bv{q})\left|M\right
+  M^{\prime}\right|\hat{O}_{3}^{}(\bv{k}, \bv{q})\left|M\right
   \rangle + \binom{A}{4} \left\langle
-  M^{\prime}\right|\hat{O}_{1234}^{}(\bv{k}, \bv{q}) \left| M\right\rangle\\
+  M^{\prime}\right|\hat{O}_{4}^{}(\bv{k}, \bv{q}) \left| M\right\rangle\\
   &+... + \binom{A}{A}\left\langle
-  M^{\prime}\right|\hat{O}_{1...A}^{}(\bv{k}, \bv{q})\left|M\right
+  M^{\prime}\right|\hat{O}_{A}^{}(\bv{k}, \bv{q})\left|M\right
   \rangle,\nonumber
 \end{align}
-where $M,M'$ is the spin of the target nucleus, and there are
-$\binom{A}{i}$ ways for a probe to hit $i$ nucleons. Fortunately
+where $\hat{O}_i$ is the $i$-body kernel, $M,M'$ is the spin of the target nucleus, and there are
+$\binom{A}{i}$ ways for a probe to hit $i$ nucleons. Fortunately,
 $\chi$EFT provides a hierarchy of scales which predicts decreasing
-contributions for higher order terms for probe energies greater than $\sim 40 \MeV$.
-To this end we use only the first two terms
+contributions for higher order terms for probe energies greater than $\sim 40 \MeV$
+\ques{your note says you want a reference here, what do you mean?}
+Therefore, the 3-body contribution and higher is negligible at this order, and we simply use
 \begin{equation}
   A_{M}^{M^{\prime} }(\bv{k}, \bv{q})=\binom{A}{1}\left\langle
   M^{\prime}\right|\hat{O}_{3}^{}(\bv{k}, \bv{q})\left|M\right
@@ -141,11 +150,11 @@ To this end we use only the first two terms
   M^{\prime}\right|\hat{O}_{12}^{}(\bv{k}, \bv{q}) \left|
   M\right\rangle\nonumber\\
 \end{equation}
-In practice this is enough for accuracy on the 5\% level.
+In practice this is enough for accuracy on roughly the 5\% level.
 \section{Kernels and Densities}
+\ques{I do not think this is specific to the $A=3$ system, but it is taken DIRECTLY from my thesis proposal.}
 The one-body and two-body kernel need to be considered separately.
-Their form is completely different, and they require a one and two
-body density respectively.
+Their form is completely different, and they require a one- and two-body density respectively.
 We now write the wave function in the three body system as the
 partial-wave decomposition of Jacobi momenta $p_i$ and the relevant
 quantum numbers $\alpha$. The wave function in momentum space is given by
@@ -156,7 +165,7 @@ The nucleus being described has total angular momentum $J$ and
 spin-projection $M$. The momenta are $\bv{p}_{12}= \frac{1}{2}
 \left(\bv{k}_1 - \bv{k}_2\right)$ where $ \bv{p}_3 = \bv{k}+
 \frac{1}{3} \bv{k}_3 $, and $p_{12} = |\bv{p}_{12}|$ and  $p_{1} =
-|\bv{p}_{1}|.$ Recall $\bv{k}_i$ are the individual nucleon momenta,
+|\bv{p}_{1}|.$ Here $\bv{k}_i$ are the individual nucleon momenta,
 and $\bv{k}$ is the probe momentum in the CM frame. The quantity
 $\alpha$ represents all the quantum numbers of the nucleons inside
 the nucleus~\cite{hammer2020}
@@ -181,7 +190,7 @@ We now seek to describe the scattering amplitudes.
 
 We restrict ourselves to elastic processes, which simplifies the
 following discussion by requiring that the probe does not change the
-charge of any of the nucleons.
+charge of the nucleons \ques{you have a note saying you want me to add "not of the nucleus", I am confused by this}.
 For the one body density, the \textit{one-body kernel} of the probe
 interaction with nucleon 3 is $O_3$. Leaving nucleons $1$ and $2$ as
 spectators~\cite{hammer2020},
@@ -200,7 +209,7 @@ where $m_t$ and $m_t'$ are the isospin of the active nucleon before
 and after the interaction (recall $m_t= \pm \frac{1}{2}$ is the proton/neutron).
 Symbolically, the matrix element $\hat{O}_3$ is:
 \begin{align}
-  \left\langle M^{\prime}\left|\hat{O}_{3}(\bv{k}, \bv{q})\right|
+  \left\langle M^{\prime}\left|\hat{O}_{1}(\bv{k}, \bv{q})\right|
   M\right\rangle&=\sum_{\alpha \alpha^{\prime}} \int \mathrm{d}
   p_{12} p_{12}^{2} \mathrm{~d} p_{3} p_{3}^{2} \mathrm{~d}
   p_{12}^{\prime} p_{12}^{\prime 2} \mathrm{~d} p_{3}^{\prime}
@@ -211,7 +220,7 @@ Symbolically, the matrix element $\hat{O}_3$ is:
   p_{3}^{\prime}\left[\left(l_{12}^{\prime} s_{12}^{\prime}\right)
     j_{12}^{\prime}\left(l_{3}^{\prime} s_{3}\right)
   j_{3}^{\prime}\right] J^{\prime} M^{\prime}\left(t_{12}^{\prime}
-  t_{3}\right) T^{\prime} M_{T}\right| \hat{O}_{3}(\bv{k}, \bv{q})
+  t_{3}\right) T^{\prime} M_{T}\right| \hat{O}_{1}(\bv{k}, \bv{q})
   \label{onebodFull}\\
   &\qquad\qquad\left|p_{12} p_{3}\left[\left(l_{12} s_{12}\right)
   j_{12}\left(l_{3} s_{3}\right) j_{3}\right] J M\left(t_{12}
@@ -220,9 +229,9 @@ t_{3}\right) T M_{T}\right\rangle.\nonumber
 The central result is that up to relativistic corrections, this can
 be written as:
 \begin{align}
-  \left\langle M^{\prime}\left|\hat{O}_{3}(\bv{k}, \bv{q})\right|
+  \left\langle M^{\prime}\left|\hat{O}_{1}(\bv{k}, \bv{q})\right|
   M\right\rangle=\sum_{\substack{m_{3}^{s \prime}\,
-  m_{3}^{s}\\m_3^t}}\hat{O}_{3}\left(m_{3}^{s \prime} m_{3}^{s},
+  m_{3}^{s}\\m_3^t}}\hat{O}_{1}\left(m_{3}^{s \prime} m_{3}^{s},
   m_{3}^{t} ;  \bv{k}, \bv{q}\right) \rho_{m_{3}^{s \prime}
   m_{3}^{s}}^{m_3^{t} M_{T}, M^{\prime} M}(\bv{k}, \bv{q})\label{onebodyOrig}\;.
 \end{align}
@@ -242,10 +251,10 @@ $M'$. Its operator form is
 \end{equation}
 The two body case works similarly, and results in
 \begin{equation}
-  \left\langle M^{\prime}\left|\hat{O}_{12}\right| M\right\rangle =
+  \left\langle M^{\prime}\left|\hat{O}_{2}\right| M\right\rangle =
   \sum_{\alpha_{11}^{\prime}, \alpha_{12}} \int \mathrm{d} p_{12}\:
   p_{12}^{2} \mathrm{~d} p_{12}^{\prime}\: p_{12}^{\prime 2}\;
-  O_{12}^{\alpha_{12}^{\prime} \alpha_{12}}\left(p_{12}^{\prime},
+  O_{2}^{\alpha_{12}^{\prime} \alpha_{12}}\left(p_{12}^{\prime},
   p_{12}\right) \rho_{\alpha_{12}^{\prime} \alpha_{12}}^{M_{T},
   M^{\prime} M}\left(p_{12}^{\prime}, p_{12} ; \bv{q}\right)\label{twobody}\;.
 \end{equation}
@@ -265,33 +274,35 @@ Importantly, $\rho$ can be computed generically from a nuclear
 potential, such as the chiral SMS potential
 without reference to the kernel $\hat{O}_3$ or $\hat{O}_{12}$
 \cite{Reinert2018}.
-\ques{Maybe this is too much detail.}
+\ques{Maybe this is too much detail. Later if we run out of space we can cut the intro discussion and just use the definitions
+of the one/two body operators.}
 
 \section{SRG Transform}
-Previous work using the transition density method has looked at
-$\HeT$ and $\HeF$ but to extend this $\LiS$ ($A=6$) involves many body
+Previous work using the TDA formalism has analyzed
+$\HeT$ and $\HeF$, but to extend this $\LiS$ involves many body
 interactions which are much more complicated, and numerically expensive
 \cite{hammer2020, hammer4He}.
-To this end a similarity renormalization group (SRG) transformation
+To make the calculation of a TDA feasible for $A=6$, a \textit{similarity renormalization group} (SRG) transformation
 is used \cite{SRG}.
 When using nuclear potentials, we approximate the potential to be zero 
-outside of a certain cutoff $\Lambda$, and therefore neglect it in our calculation.
-In general a nuclear potential, such as the chiral SMS potential does
-not fall off quickly for high momenta meaning we would have to
-extend the cutoff much further than we would like which in turn
-increases computation cost.
+outside a certain cutoff $\Lambda$, and therefore neglect it in our calculation.
+In general, a nuclear potential, such as the chiral SMS potential does
+not fall off quickly for high momenta, meaning we would have to
+extend the cutoff much further than we would like, which in turn
+increases computational cost.
 The SRG transform is a unitary transformation that allows us to
-shovel all the dependence into the low momentum region making
-calculation for $A=6$ possible.
+move all the dependence into the low momentum region, thereby decreasing the
+lowest possible value of the cutoff, which in turn makes
+calculation for $A=6$ converge significantly faster.
 The SRG transformation can be thought of as a local averaging or
-smoothing out of the potential, resulting in decreased "resolution"
+smoothing out of the potential, resulting in decreased ``resolution''
 has the SRG is applied.
 \begin{figure}[h]
   \centering
   \begin{subfigure}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth]{HighRes.png}
-    \caption{High Resolution (bare, unevolved potential) }
+    \caption{High Resolution (before much SRG is applied) }
     \label{fig:highres}
   \end{subfigure}
   \hfill
@@ -306,16 +317,16 @@ has the SRG is applied.
   overview and applications'' presentation at TALENT school at MITP 2022}
   \label{fig:SRGtransform}
 \end{figure}
-In the unevolved, high resolution figure \ref{fig:highres} one can
+In the under-evolved, high resolution figure \ref{fig:highres} one can
 see the potential does not go to zero quickly whereas once the
 transformation is applied in figure \ref{fig:lowres} it does. As a
-result a cutoff can be made at $k,k'=2 \mathrm{fm}^{-1}$ without
-losing much accuracy. In the example above, if the unevolved
-potential had to be consider up to $k,k'=5$, this means an efficiency
+result a cutoff can be made at \ques{I like calling it $k$ here, not $\Lambda$} $k,k'=2 \mathrm{fm}^{-1}$ without
+losing much accuracy. In the example above, the under-evolved
+potential had to be considered up to $k,k'=5\mathrm{fm}^{-1}$, this means an efficiency
 gain proportional to the areas of each, for a factor of $(5/2)^2=6.25$.
 
-However, this creates another problem; the SRG transform creates a
-change in physical meaning of the momenta free variables.
+However, this creates another problem: the SRG transform creates a
+change in the physical meaning of the free variables.
 To understand this, let us first consider an example the reader is
 certainly more familiar with - a Fourier transformation which changes
 a potential from position to momentum space.
@@ -324,8 +335,8 @@ a potential from position to momentum space.
   \int \dd^3p\, \dd^3p' \brkt{r'}{p'} \br{p'}V\kt{p} \brkt{p}{r}\\
   =V(\vec{p},\vec{p}\,')
 \end{equation}
-After the transform our free variables have different physical
-meaning. In fact, any unitary transform, also transforms the coordinates.
+After the transform, our free variables have different physical
+meaning. In fact, any unitary transform also transforms the coordinates.
 \begin{align}
   \br{p'}V\kt{p} &= \br{p'} \mathbbm{1} V \mathbbm{1} \kt{p}\nonumber\\
   &= \br{p'} U^\dag U V U^\dag U \kt{p}\nonumber\\
@@ -334,50 +345,59 @@ meaning. In fact, any unitary transform, also transforms the coordinates.
   &= \br{\widetilde{p}\,'} V_{eff}
   \kt{\widetilde{p}}=V_{eff}(\widetilde{p},\widetilde{p}\,')\nonumber
 \end{align}
-So calling the free variables in an SRG transformed potential
-``momenta'' is abuse of notation.
-They are not physical states in the sense that $\wtil{p}=50 \MeV$
+So calling the free variables in an SRG-transformed potential
+``momenta'' to some degree is abuse of notation.
+They are not physical states \ques{you have a note here "variables are states?" what do you mean by this?} in the sense that $\wtil{p}=50 \MeV$
 does not correspond to a state of $50 \,\MeV$ an experimentalist can prepare.
-The Lagrangians that generate the Feynman diagrams in the kernel
-however have dependence on physical momenta and therefore we cannot directly use an SRG 
+The Lagrangians that generate the Feynman diagrams in the kernel, however,
+depend on physical momenta, and therefore we cannot directly use an SRG 
 evolved potential in the non-SRG evolved kernel.
 To solve this, previous work with SRG transformations has transformed
-the Lagrangians into the SRG evolved space, however in
+Lagrangians and therefore the kernels into the SRG evolved space as well. However, in
 the case of the density formalism this would mean adding SRG
 information into the kernel, thereby breaking kernel-density independence.
 Additionally, the SRG transformation can take many different forms; 
-the state of the art transformation has
+the state-of-the-art transformation has
 changed over the years, and we wish to allow for these developments
-without having to re-write the kernel code.
-Therefore Xiang-Xiang Sun \etal have chosen to apply an inverse
-transformation to the densities.
+without having to re-write the kernel code \ques{add reference}.
+Therefore we have chosen to apply an inverse
+transformation to the densities\ques{maybe cite Xiang-Xiang, depending on what they want}.
+
 This work was begun with the highest nucleon number system we can
 calculate densities for without an SRG transformation, which is
-$\HeF$. In this way we have gained confidence in $\HeF$ before moving
+$\HeF$. In this way we gained confidence in $\HeF$ before moving
 to the more complex $\LiS$.
 \ques{Are they not publishing a paper on this? How do I credit
-Xiang-Xiang effectively}
+Xiang-Xiang effectively?}
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=\linewidth]{SRG-Converge-Double.pdf}
     \caption{A convergence plot for $\HeF$\, Compton scattering
-    showing the relative deviation of the matrix elements (ME) of the reaction.}
+    showing the relative deviation of the matrix elements (ME) of the reaction.\ques{What about an Ntotmax convergence plot? also I fear I don't understand something or this plot is mislabeled, why does strictly increasing omegaH decrease error}}
     \label{fig:SRGConverge4He}
   \end{center}
 \end{figure}
-In figure \ref{fig:SRGConverge4He} we see the effectiveness of the results in the $\HeF$ case.
-The SRG transformation uses the harmonic oscillator basis, and the
-value `omegaH` on the $x$-axis is the width of the harmonic
-oscillator potential, and `Ntotmax` is the total number of states
-used.
+In figure \ref{fig:SRGConverge4He}, we see the effectiveness of the results in the $\HeF$ case.
+The SRG transformation uses the harmonic oscillator basis,
+with `omegaH` on the $x$-axis representing the width of the harmonic
+oscillator potential, and `Ntotmax` the quantum numbers of the highest harmonic oscillator excitation used.
+The harmonic oscillators form a complete basis state for this system.
+\ques{I'm writing this next part as if the plot above actually has Ntotmax on the x-axis.}
+Expansion to $N=\infty$, $\Lambda_{\text{cutoff}}=\infty$ would result in perfect agreement.
+The truncation to finite $\Lambda$ results in induced many-body forces, but this effect is small.
+The truncation to finite $N$ is much more significant, and drastically effects the computational resources required.
+The figure \ref{fig:SRGConverge4He} shows the combined effect of both of these truncations; we expect the deviation to decrease as $N$ increases, and importantly for our analysis, this shows what value of $N$ is required.
 With this completed we have now moved to $\LiS$.
-This is of much interest experimentally since this target is solid at room temperature and does not decay, it is therefore 
-easy to place in a beam path.
-\ques{$\LiS$ results go here maybe?}
-\ques{How much more do we talk about? We have many more results since
-  the actual chiral dynamics presentation. Also do we really want to
-put that "preliminary" plot with the fuzzy values on here?}
+This is of much interest experimentally since this target is stable solid at room temperature,
+it is therefore easy to conduct an experiment on, even to high precision due to its relatively large
+cross section.
+\ques{$\LiS$ results go here.}
 \section{Analyzing Different Interactions}
+We are of course interested in Compton scattering but we also with to extend the density
+formalism to other processes. In particular pion-photoproduction, and
+pion-pion scattering are of interest.
+Fortunately their kernels share remarkable similarity since there are
+only so many ways for one particle to go in and one to go out.
 \subsection{Compton Scattering}
 Compton scattering allows for extraction of the nucleon polarizabilites.
 $\alpha_{E1}, \beta_{M1}$, a subject of much experimental interest. 
@@ -385,20 +405,12 @@ These parameters quantify the stiffness of a nucleus, and enter in the Hamiltoni
 \begin{equation}
     \mathcal{H}=-4\pi \left( \frac{1}{2} \alpha_{E1} \bv{E}^2 + \frac{1}{2} \beta_{M1} \bv{H}^2\right)
 \end{equation}
-\ques{Can these parameters be extracted experimentally?}
-There are many experiments on $\LiS$, but as of yet there is no theory prediction, we seek to fill this gap \cite{60MeV,86MeV}.
+There are many experiments on $\LiS$, yet as of now there is no theory prediction \cite{60MeV,86MeV}. We seek to fill this gap.
 
-Beyond Compton scattering we are interested in extending the density
-formalism to other processes. In particular pion-photoproduction, and
-pion-pion scattering are of interest.
-Fortunately their kernels share remarkable similarity since there are
-only so many ways for one particle to go in and one to go out.
-\ques{I don't want to include that diagram since I stole the figures from
-somewhere, but I don't remember where}
 
 \subsection{Pion-Photoproduction}
-For the pion-photoproduction one-body kernel we use the results of scattering on a single nucleon, $\gamma N \to \pi N$ which has
-been studied extensively.
+For the pion-photoproduction one-body kernel, we use the results of scattering on a single nucleon, $\gamma N \to \pi N$ which has
+been studied extensively \cite{pionphoto, Rijneveen2021,Workman2012,Briscoe2023}.
 Its differential cross section can be decomposed in terms of the
 electric and magnetic multipoles $E_{l\pm}, M_{l\pm}$ which are angle
 independent  \cite{pionphoto}.
@@ -408,15 +420,16 @@ such as ``Unified Chew-Mandelstam SAID analysis...'' Workman \etal \cite{multipo
 The scattering matrices $\mathcal{M}$ which result from this are exactly what enters as $\hat{O}_3$ in equation (\ref{onebodyOrig}). 
 This solves a significant problem since calculation of the one-body pion-photoproduction kernel to high accuracy directly through Feynman diagrams requires including many terms in the chiral expansion due to the proximity of the $\Delta(1232)$ resonance at $\sim 200\MeV$ \cite{chiralpionphoto}.
 
-The two-body contributions do not easily decompose into multipole interactions, therefore we preform the calculation through expansions in the chiral Lagrangian and 
+The two-body contributions do not easily decompose into multipole interactions, therefore we preform the calculation through expansions in the chiral Lagrangian through calculation of Feynman diagrams.
 At threshold energy this reaction kernel has been analyzed by Lenkewitz \etal \cite{L2011, L2013}.
-We must extend this to finite energy, and to higher order if necessary.
-\ques{We have a stable result now, do we include this information? We didn't have this at the time of the conference.}
+We now have a numerically stable result for $\HeT$ and seek to extend this to new targets.
+\ques{Include some numbers}
 \subsection{Pion-Pion scattering and other reactions}
-The pion-pion scattering kernel is similar to the pion photoproduction kernel. Beane \etal has developed this kernel at threshold for both one-body and two-body interactions \cite{Beane2003}.
-We may extend this to finite energy. 
-When the pion-photoproduction and pion-pion scattering kernels have successfully been developed, we will instantly be able to calculate all of these reactions on targets previously analyzed in the density formalism since we already have produced the densities required.
-In particular, we will calculate all of these reactions with the targets $\HeT$, $\HeF$, and $\LiS$.
+The pion-pion scattering kernel is similar to the pion-photoproduction kernel.
+Beane \etal has developed the pion-pion kernel at threshold for both one-body and two-body interactions \cite{Beane2003}.
+We may extend this to finite energy\ques{You have a note here I cannot make out, it looks like "cheis as well?".} 
+Once the pion-photoproduction and pion-pion scattering kernels have successfully been developed, we will instantly be able to calculate all of these reactions on targets previously analyzed in the density formalism since we already have produced the densities required.
+In particular, we will calculate all of these reactions with the targets $\HThree$, $\HeT$, $\HeF$, and $\LiS$.\ques{are we actually doing $\HThree$?} 
 \section{Conclusion}
 
 
@@ -475,6 +488,15 @@ L. S. Myers, M. W. Ahmed, G. Feldman, S. S. Henshaw, M. A. Kovash, J. M. Mueller
 
 \bibitem{Beane2003}
 S. R. Beane, V. Bernard, E. Epelbaum, U.-G. Meißner, and D. R. Phillips, ``The S-wave pion–nucleon scattering lengths from pionic atoms using effective field theory,'' \textit{Nuclear Physics A}, vol. 720, no. 3–4, pp. 399–415, Jun. 2003. DOI: \href{http://dx.doi.org/10.1016/S0375-9474(03)01008-X}{10.1016/S0375-9474(03)01008-X}.
+
+\bibitem{Rijneveen2021}
+N. Rijneveen, A. M. Gasparyan, H. Krebs, and E. Epelbaum, ``Pion photoproduction in chiral perturbation theory with explicit treatment of the $\Delta(1232)$ resonance,'' 2021. Available: \href{https://arxiv.org/abs/2108.01619}{arXiv:2108.01619}.
+
+\bibitem{Workman2012}
+R. L. Workman, M. W. Paris, W. J. Briscoe, and I. I. Strakovsky, ``Unified Chew-Mandelstam SAID analysis of pion photoproduction data,'' \textit{Phys. Rev. C}, vol. 86, no. 1, p. 015202, Jul. 2012. DOI: \href{https://link.aps.org/doi/10.1103/PhysRevC.86.015202}{10.1103/PhysRevC.86.015202}.
+\bibitem{Briscoe2023}
+W. J. Briscoe, A. Schmidt, I. Strakovsky, R. L. Workman, and A. \ifmmode \check{S}\else \v{S}\fi{}varc, ``Extended SAID partial-wave analysis of pion photoproduction,'' \textit{Phys. Rev. C}, vol. 108, no. 6, p. 065205, Dec. 2023. DOI: \href{https://link.aps.org/doi/10.1103/PhysRevC.108.065205}{10.1103/PhysRevC.108.065205}.
+
 \end{thebibliography}
 
 \end{document}

@@ -1,0 +1,13 @@
+*.pdb_latexmk
+*.log
+*.fls
+*.mod
+*.tmp
+*.h5
+*.gz
+*.log
+*.aux
+*.out
+*.synctex.gz
+*.zip
+zipadd.sh
