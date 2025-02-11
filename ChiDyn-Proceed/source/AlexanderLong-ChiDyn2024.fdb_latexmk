@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1739298831 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1739298831 0
+["pdflatex"] 1739299024 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1739299025 0
   "/etc/texmf/web2c/texmf.cnf" 1726526631 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alexander/.texlive2022/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk" 1728918362 7808 05b98e5b882e13f4c3bd9945641c7071 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1640468671 2914 8283dfc24eaf1964346f843d7605c2b0 ""
@@ -173,9 +173,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1728051177 7878617 fbf09dfaeda4c4724b9feea1d0639bb0 ""
   "6Li-Ntotmax-vary-omegaH14.pdf" 1739213735 165975 b3b656e60f11d282627f8d1b4afd79e8 ""
   "6Li-omegaH-vary.pdf" 1739211761 262608 b0fd659a02a671dba30dc9d4ae2c093f ""
-  "AlexanderLong-ChiDyn2024.aux" 1739298831 6104 d836d3115fc0604f6b8512dcc214b459 "pdflatex"
-  "AlexanderLong-ChiDyn2024.out" 1739298831 1246 aeedce28e538d51af82d57e16214ba8d "pdflatex"
-  "AlexanderLong-ChiDyn2024.tex" 1739298831 28647 39f537293e8a074980db2008cf1cc24b ""
+  "AlexanderLong-ChiDyn2024.aux" 1739299025 6104 d836d3115fc0604f6b8512dcc214b459 "pdflatex"
+  "AlexanderLong-ChiDyn2024.out" 1739299025 1246 aeedce28e538d51af82d57e16214ba8d "pdflatex"
+  "AlexanderLong-ChiDyn2024.tex" 1739299017 28647 9fa5c782fc528781167fcb744eab5ea3 ""
   "HighRes.png" 1738000888 106649 cbd2ec2d7778176cc4c1d324d9d657e6 ""
   "LowRes.png" 1738000904 178245 b2c3c024bd2d070b27aa9e921cdf4bac ""
   "PoSlogo.pdf" 1434382136 18116 9695eaee2f7b2bcd896df8f45468280e ""
