@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1739299024 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1739299025 0
+["pdflatex"] 1739816862 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1739816863 0
   "/etc/texmf/web2c/texmf.cnf" 1726526631 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alexander/.texlive2022/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk" 1728918362 7808 05b98e5b882e13f4c3bd9945641c7071 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1640468671 2914 8283dfc24eaf1964346f843d7605c2b0 ""
@@ -171,15 +171,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1728051094 4623455 fa0568a71dd9a288d6c226ee477506c6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1728051177 7878617 fbf09dfaeda4c4724b9feea1d0639bb0 ""
+  "4HeCrossSection.rel-dev-SRG-vs-nonSRG.chiralsmsN4LO+3nfN2LO-Λ550.Odelta2.pdf" 1739376878 31924 180aef3afb931eae31489c8fb203792c ""
   "6Li-Ntotmax-vary-omegaH14.pdf" 1739213735 165975 b3b656e60f11d282627f8d1b4afd79e8 ""
   "6Li-omegaH-vary.pdf" 1739211761 262608 b0fd659a02a671dba30dc9d4ae2c093f ""
-  "AlexanderLong-ChiDyn2024.aux" 1739299025 6104 d836d3115fc0604f6b8512dcc214b459 "pdflatex"
-  "AlexanderLong-ChiDyn2024.out" 1739299025 1246 aeedce28e538d51af82d57e16214ba8d "pdflatex"
-  "AlexanderLong-ChiDyn2024.tex" 1739299017 28647 9fa5c782fc528781167fcb744eab5ea3 ""
+  "AlexanderLong-ChiDyn2024.aux" 1739816863 5933 6512ba35f7092a367059f00202ef1a4d "pdflatex"
+  "AlexanderLong-ChiDyn2024.out" 1739816863 1246 aeedce28e538d51af82d57e16214ba8d "pdflatex"
+  "AlexanderLong-ChiDyn2024.tex" 1739816860 30160 e3aeeb554cdfe7be0e78830f433be202 ""
   "HighRes.png" 1738000888 106649 cbd2ec2d7778176cc4c1d324d9d657e6 ""
   "LowRes.png" 1738000904 178245 b2c3c024bd2d070b27aa9e921cdf4bac ""
   "PoSlogo.pdf" 1434382136 18116 9695eaee2f7b2bcd896df8f45468280e ""
-  "SRG-Converge-Double.pdf" 1738169661 50759 29e118821827f89d01d5a2038e04923a ""
   "kinematics3He.pdf" 1737995067 65635 b1fdaaf981c8ae952bf074751db9d1e4 ""
   "pos.sty" 1728081860 18773 1f6c60a4b59d135c46833262207700ff ""
   (generated)

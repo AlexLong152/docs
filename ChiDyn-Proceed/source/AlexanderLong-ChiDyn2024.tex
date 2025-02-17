@@ -378,16 +378,18 @@ $\HeF$. In this way we gained confidence in our approach for $\HeF$ before movin
 to the more complex $\LiS$.
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=\linewidth]{SRG-Converge-Double.pdf}
-    \caption{A convergence plot for $\HeF$\, Compton scattering
-    .\ques{This is a stand-in, need convergence plots from you.}}
+    \includegraphics[width=\linewidth]{ 4HeCrossSection.rel-dev-SRG-vs-nonSRG.chiralsmsN4LO+3nfN2LO-Λ550.Odelta2.pdf}
+    \caption{$\HeF$\, Compton scattering SRG convergence}
     \label{fig:SRGConverge4He}
   \end{center}
 \end{figure}
+\begin{equation}
+  \text{``Relative deviation, (Rel. deviation) of $A$ from $M$''}:= \frac{A}{M}-1  
+\end{equation}
 In figure \ref{fig:SRGConverge4He}, we see the effectiveness of the results in the $\HeF$ case.
-The figure \ref{fig:SRGConverge4He} shows the combined effect of both of these truncations; we expect the deviation to decrease as $N$ increases, and importantly for our analysis, this shows what value of $N$ is required.
+We expect the deviation to decrease as $N$ increases, and importantly for our analysis, this shows what value of $N$ is required.
 With this completed we have now moved to $\LiS$.
-This is of much interest experimentally since this target is stable solid at room temperature,
+This is of much interest experimentally since this target is a stable solid at room temperature,
 it is therefore easy to conduct an experiment on, even to high precision due to its relatively large
 cross section.
 
@@ -447,7 +449,12 @@ We may extend this analysis to finite energy\ques{You have a note here I cannot 
 Once the pion-photoproduction and pion-pion scattering kernels have successfully been developed, we will be able to calculate all of these reactions on previously analyzed targets in the density formalism since we already have produced the TDAs required.
 In particular, we will calculate all of these reactions with the targets $\HThree$, $\HeT$, $\HeF$, and $\LiS$.\ques{are we actually doing $\HThree$?} 
 \section{Conclusion}
-
+We have developed and demonstrated a comprehensive framework for computing scattering observables in light nuclei by factorizing the full amplitude into target‐dependent few-body transition density amplitudes (TDAs) and probe‐dependent interaction kernels.
+This separation allows us to treat the nuclear structure and the reaction mechanism independently, thereby streamlining the calculation of observables in systems ranging from $^3$He and $^4$He to the more challenging case of $^6$Li.
+The central achievement of this work is the successful extension of the density formalism to heavier targets by incorporating a similarity renormalization group (SRG) transformation.
+The SRG not only accelerates the convergence of our calculations by lowering the effective momentum cutoff, but—when combined with an appropriate inverse transformation of the densities—also preserves the kernel–density independence that is crucial for the versatility of our approach.
+Furthermore, we have outlined the extension of the formalism to other reactions, such as pion-photoproduction and pion-pion scattering. The ability to plug in different reaction kernels into the same TDA framework not only enhances the predictive power of our approach but also paves the way for a unified treatment of various scattering processes in few-body systems.
+ Ultimately, this framework provides a promising route toward high-precision theoretical predictions, deepening our understanding of nuclear dynamics in light nuclei.
 
 \begin{thebibliography}{99}
   \bibitem{hammer2020}
