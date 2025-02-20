@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1739816862 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1739816863 0
+["pdflatex"] 1740071016 "AlexanderLong-ChiDyn2024.tex" "AlexanderLong-ChiDyn2024.pdf" "AlexanderLong-ChiDyn2024" 1740071016 0
   "/etc/texmf/web2c/texmf.cnf" 1726526631 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alexander/.texlive2022/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.657pk" 1728918362 7808 05b98e5b882e13f4c3bd9945641c7071 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc" 1640468671 2914 8283dfc24eaf1964346f843d7605c2b0 ""
@@ -174,10 +174,11 @@
   "4HeCrossSection.rel-dev-SRG-vs-nonSRG.chiralsmsN4LO+3nfN2LO-Λ550.Odelta2.pdf" 1739376878 31924 180aef3afb931eae31489c8fb203792c ""
   "6Li-Ntotmax-vary-omegaH14.pdf" 1739213735 165975 b3b656e60f11d282627f8d1b4afd79e8 ""
   "6Li-omegaH-vary.pdf" 1739211761 262608 b0fd659a02a671dba30dc9d4ae2c093f ""
-  "AlexanderLong-ChiDyn2024.aux" 1739816863 5933 6512ba35f7092a367059f00202ef1a4d "pdflatex"
-  "AlexanderLong-ChiDyn2024.out" 1739816863 1246 aeedce28e538d51af82d57e16214ba8d "pdflatex"
-  "AlexanderLong-ChiDyn2024.tex" 1739816860 30160 e3aeeb554cdfe7be0e78830f433be202 ""
+  "AlexanderLong-ChiDyn2024.aux" 1740071016 6291 db98f87848b0a38cb2364732bbd35f4e "pdflatex"
+  "AlexanderLong-ChiDyn2024.out" 1740071016 1107 9607fc0d58a28c40b616fb874a215bbe "pdflatex"
+  "AlexanderLong-ChiDyn2024.tex" 1740071015 28204 b68b98cb9251b5a1dc771ccf07c56b40 ""
   "HighRes.png" 1738000888 106649 cbd2ec2d7778176cc4c1d324d9d657e6 ""
+  "KernelSim.pdf" 1740068223 2202 11b724446b24693bca4a93a42fa33366 ""
   "LowRes.png" 1738000904 178245 b2c3c024bd2d070b27aa9e921cdf4bac ""
   "PoSlogo.pdf" 1434382136 18116 9695eaee2f7b2bcd896df8f45468280e ""
   "kinematics3He.pdf" 1737995067 65635 b1fdaaf981c8ae952bf074751db9d1e4 ""
