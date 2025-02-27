@@ -131,7 +131,7 @@ therefore if one has access to $a$ distinct kernels (e.g. Compton pion and scatt
 and $b$ distinct TDAs (e.g. $\HeT, \HeF, \LiS$), then a total of $ab$ different outcomes may be
 generated (provided certain details about the kinematics hold). 
 \ques{I want to omit the detail that the one and two body kernels are different here, otherwise it gets to wordy. If it really needs
-it then I think its best to leave this part out.}
+it then I think its best to leave this part out. Maybe we leave it out anyway, I only get 10 pages.}
 The $n$-body kernel characterizes the interaction in the reduced case
 where interacts exclusively with the $n$-body
 system. For example, the one-body kernel in Compton scattering
@@ -223,18 +223,18 @@ $m_s^{3'}$ and changes the spin-projection of the nucleus from $M$ to
 $M'$, hence the name "Transition Density Amplitude".
 Additionally, $M_T$ is the isospin projection of the entire nucleus and $\vec{k}$ is the momentum of the incoming probe.
 The two-body case works similarly, and results in
-\begin{equation}
-  \left\langle M^{\prime}\left|\hat{O}_{2}\right| M\right\rangle =
+\begin{align}
+  \left\langle M^{\prime}\left|\hat{O}_{2}\right| M\right\rangle &=
   \sum_{\alpha_{11}^{\prime}, \alpha_{12}} \int \mathrm{d} p_{12}\:
   p_{12}^{2} \mathrm{~d} p_{12}^{\prime}\: p_{12}^{\prime 2}\;
   \hat{O}_{2}^{\alpha_{12}^{\prime} \alpha_{12}}\left(p_{12}^{\prime},
   p_{12}\right) \rho_{\alpha_{12}^{\prime} \alpha_{12}}^{M_{T},
-  M^{\prime} M}\left(p_{12}^{\prime}, p_{12} ; \bv{q}\right)\label{twobody}\;.
-\end{equation}
-Where 
-\begin{equation}
-  | \alpha \rangle =|\left[(l_{12}s_{12})j_{12}(l_3 s_3)j_3\right] JM,\;(t_{12}t_3)TM_T\rangle
-\end{equation}
+  M^{\prime} M}\left(p_{12}^{\prime}, p_{12} ; \bv{q}\right)\label{twobody}\;
+\end{align}
+Where
+\begin{align}
+   | \alpha \rangle & =|\left[(l_{12}s_{12})j_{12}(l_3 s_3)j_3\right] JM,\;(t_{12}t_3)TM_T\rangle
+\end{align}
 This is the two-body equivalent to \eqref{onebodyOrig}.
 The two-body density $\rho_{\alpha_{12}^{\prime}
 \alpha_{12}}^{M_{T}, M^{\prime} M}$ is of course distinct
@@ -244,11 +244,11 @@ transition probability density amplitude.
 It depends on the incoming and outgoing quantum numbers
 $\alpha_{12}$ and $\alpha_{12}'$ of the system of the two active nucleons, and also on their initial and final
 relative momenta $p_{12}$ and $p_{12}'$ (also of the two nucleons) which are integrated over \com{it's not the 2 nucleons which are integrated over but their rel momenta. Need better formulation!}.\ques{I do not understand what you mean, isn't this what I am already saying?}
-As a result, the file size for the two nucleon densities is approximately 20 MB
+As a result, the file size for the two nucleon TDAs is approximately 20 MB
 per energy and angle, whereas those of the one
-nucleon densities are on the order of a few KB.
+nucleon TDAs are on the order of a few KB.
 Importantly, the densities $\rho$ can for a given momentum transfer $\vec{q}$ be computed directly from a nuclear
-potential, such as the chiral Semilocal Momentum-Space (chiral SMS) potential
+potential, such as the chiral Semilocal Momentum-Space ($\chi$SMS) potential
 \cite{Reinert2018}
 without reference to the kernel $\hat{O}_1$ or $\hat{O}_{2}$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -267,7 +267,7 @@ We seek to fill in this gap.
 When using nuclear potentials, we approximate the nucleon-nucleon potential to be zero
 beyond a certain cutoff $\LamNN$, and consequently
 neglect contributions above this cutoff in our calculations.
-In general, a nuclear potential, such as the chiral SMS potential \cite{Reinert2018} does
+In general, a nuclear potential, such as the $\chi$SMS potential \cite{Reinert2018} does
 not fall off rapidly at high momenta.
 As a result we would have to
 extend the cutoff $\LamNN$ which in turn significantly increases the computational cost.
@@ -383,25 +383,26 @@ We expect the deviation to decrease as $N$ increases, and importantly
 for our analysis, this shows what value of $N$ is required.
 The small error present at high $\Ntot$ is present do to the induced many body forces.
 
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.5]{6Li-omegaH-vary.pdf}
-  \caption{Caption}
-  \label{fig:label1}
-\end{figure}
-
 \com{from here on, presentation needs a lot more verbiage and detail -- but I guess you know that}
 
 \com{discuss input: kernels same as in 34He (reference), central values of polarisabilities same as there (aae central values of most recent extractions, reference). Comparison to HIGS data is good/bad/undecided. Will study convergence in detail. Here assumed overall 10\% error as in 34He from potential/cutoff variations plus order-by-order convergence plus numerics plus extrapolations in LambdaSRG/Ntotmax/omegaH,... get inspired by 1-paragraph summary in 4He paper. }
-
+\subsection{Results for $\LiS$}
+The kernels used for $\LiS$ Compton scattering are the same as Grie{\ss}hammer \etal~ uses in $\HeT$ and $\HeF$ Compton scattering \cite{hammer2020, hammer4He}.
+Long \etal \cite{upcoming} will provide a full  analysis of uncertainty.
+For this analysis an overall $10\%$ uncertainty is assumed in agreement with Grie{\ss}hammer \etal \cite{hammer2020, hammer4He} which accounts for the cutoff $\LamNN$ and $\LamSRG$ variation, 
+along with $\omega_H$ selection. 
+We include an additional, independent, contribution from $\Ntot$ which is easy to calculate, but is negligible compared to other sources;
+the methodology behind this will be discussed in Long \etal \cite{upcoming}.
 \begin{figure}[H]
   \centering
   %\includegraphics[width=\linewidth]{file_path}
-  \includegraphics[scale=0.5]{6Li-Ntotmax-vary-omegaH14.pdf}
-  \caption{Caption}
-  \label{fig:label2}
+  \includegraphics[scale=0.5]{ExpVSTheory-1.pdf}
+  \caption{Compton scattering on $\LiS$ as compared to Myers \etal \cite{60MeV}}
+  \label{fig:TheoryVSExperiment}
 \end{figure}
+The data present does not match the experimental results.
+\ques{What do we say about this? They did have a broken panel.}
+\ques{One/two sentences wraps up this section.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using TDAs in different processes}
 With the TDAs calculated for Compton scattering, we now wish to recycle them for new processes.
@@ -439,24 +440,38 @@ in the chiral Lagrangean via calculation of Feynman diagrams.
 To this end Beane \etal $\cite{Beanephotoprod}$ provides the kernel for the reaction on the deuteron at threshold
 and since we only go up to the two-body kernel this is sufficient for our needs.
 Additionally this reaction kernel has been analyzed by
-Lenkewitz \etal \cite{L2011, L2013} who considers the targets $\HeT$ and $\HThree$.
-We now have a numerically stable result for $\HeT$ and seek to extend
-this approach to new targets.
-\ques{Include some numbers, need to discuss with you uncertainty analysis.} \com{yes!!!!}
+Lenkewitz \etal \cite{L2011, L2013} whose result for $\HeT$ we now compare to.
+In particular, we consider the commonly referred to form factors 
+$F_S^{S\pm V}, F_L^{S\pm V}, F_{T/L}^{(a)}-F_T^{(b)}$, a full description of these formfactors is present in Lenkewitz \etal \cite{L2011}.
+Note that here we present only the central values, but upcoming work will provide a full analysis \cite{upcomingPionPhoto}.
+We use the $\chi$SMS potential, whereas Lenkewitz used the AV-18 potential, so it is expected our values will differ slightly.
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+${}^3\mathrm{He}$ Compton Scattering    & Lenkewitz \etal AV-18 \cite{L2011} & $\chi$SMS TDA calculation\cite{upcomingPionPhoto} \\ \hline\hline
+One-body              &                &                           \\ \hline
+$F_T^{S+V}$           & 0.017(13)(3)   & -0.017                    \\
+$F_T^{S-V}$           & 1.480(26)(3)   & 1.48                      \\
+$F_L^{S+V}$           & -0.079(14)(8)  & -0.005                    \\
+$F_L^{S-V}$           & 1.479(26)(8)   & 1.48                      \\ \cline{1-1}\hline\hline
+Two-body              &                &                           \\ \hline
+$F_T^{(a)}-F_T^{(b)}$ & -29.3  $\fmin$        & -29.4   $\fmin$           \\
+$F_L^{(a)}-F_L^{(b)}$ & -22.9   $\fmin$       & -22.9   $\fmin$                  \\ \hline
+\end{tabular}
+\end{table}
 
 
 \subsection{Pion scattering and other reactions}
 Beane \etal have developed the pion scattering kernel at threshold for both
 one-body and two-body interactions \cite{Beane2003}.
-We anticipate extending this analysis to finite energy the targets $\HThree, \HeT, \HeF, \LiS$
-Once the pion-photoproduction and pion-pion scattering kernels have
+We anticipate extending this analysis to finite energy the targets $\HThree, \HeT, \HeF, \LiS$.
+Once the pion-photoproduction and pion scattering kernels have
 successfully been developed, we will be able to calculate all of
 these reactions on previously analyzed targets in the density
 formalism since we already have produced most of the TDAs required.
-In particular, we will calculate all of these reactions with the
-targets $\HThree$, $\HeT$, $\HeF$, and $\LiS$. \com{relocate to 2 sentences prior}
-\ques{Review this par}
-
+This will be the first time chiral symmetry has been tested with heavier nuclei targets.
+\ques{What else is there to say here? The Braun thesis makes it hard to justify...}
 \com{why is this interesting? first study (?) of ChiSym in these processes at heavier nucei. But beware Braun PhD thesis: maybe cite to reflect literature?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -538,7 +553,7 @@ Germany).
   \textit{The European Physical Journal A}, vol. 54, no. 5, May 2018.
   DOI:
   \href{http://dx.doi.org/10.1140/epja/i2018-12516-4}{10.1140/epja/i2018-12516-4}.
-  \bibitem{hammer4He}
+\bibitem{hammer4He}
 Grießhammer, H.W., Liao, J., McGovern, J.A. et al. Compton scattering on 
  with nuclear one- and two-body densities. Eur. Phys. J. A 60, 132 (2024). https://doi.org/10.1140/epja/s10050-024-01339-x
 \href{https://arxiv.org/abs/2401.16995}{arXiv:2401.16995}.
@@ -627,8 +642,10 @@ C}, vol. 84, p. 1138, 2024. DOI:
 \href{https://doi.org/10.1140/epjc/s10052-024-13477-z}{10.1140/epjc/s10052-024-13477-z}.
 
 \bibitem{upcoming}
-Alexander Long, Harald W. Grie{\ss}hammer, X.-X. Sun, H. Le, A. Nogga,  in preparation (2025).
+Alexander Long, Harald W. Grie{\ss}hammer, X.-X. Sun, H. Le, A. Nogga,  in preparation (2025). Transition density amplitude calculation of $\LiS$ to $\mathcal{O}(e^2 \delta^3)$
 
+\bibitem{upcomingPionPhoto}
+Alexander Long, Harald W. Grie{\ss}hammer, X.-X. Sun, H. Le, A. Nogga,  in preparation (2025). Transition density amplitude calculation of pion photoproduction on light nuceli.
 \bibitem{Griesshammer2012}
 H. W. Grie{\ss}hammer, J. A. McGovern, D. R. Phillips, and G. Feldman, ``Using Effective Field Theory to analyse low-energy Compton scattering data from protons and light nuclei,'' \textit{Progress in Particle and Nuclear Physics}, vol. 67, no. 4, pp. 841–897, Oct. 2012. DOI: \href{http://dx.doi.org/10.1016/j.ppnp.2012.04.003}{10.1016/j.ppnp.2012.04}.
 
