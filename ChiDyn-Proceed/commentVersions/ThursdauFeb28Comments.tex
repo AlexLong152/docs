@@ -21,7 +21,7 @@
 \newcommand{\brkt}[2]{\left \langle #1 |#2 \right \rangle}
 \newcommand{\eps}{\epsilon}
 \newcommand{\cEFT}{$\chi$EFT}
-\newcommand{\etal}{\textit{et al.}~}
+\newcommand{\etal}{\textit{et al.}}
 \newcommand{\Li}{\mathrm{Li}}
 \newcommand{\LiS}{{}^{6} \mathrm{Li} }
 \newcommand{\HeF}{{}^{4} \mathrm{He}}
@@ -101,7 +101,13 @@ Ruhr University Bochum, Germany\\}
 
 \begin{document}
 \maketitle
+\com{This is a comment, (for Dr.Griesshammer's use) $a^2$}
+\ques{This is a question (for Alex's use)}
 \section{Introduction}
+\com{my proc will be very similar to 
+    EPJ Web Conf. 303 (2024) 04002
+        MENU 2023
+e-Print:    2401.15673 [nucl-th] -- you might want to have a look.}
 Effective Field Theories (EFTs) in nuclear physics make precise predictions by employing only those
 degrees of freedom that are most pertinent to the physical system
 under consideration, rather than relying on the complete set of
@@ -129,7 +135,8 @@ where interacts exclusively with the $n$-body
 system. For example, the one-body kernel in Compton scattering
 encompasses the same contributions as those arising in Compton
 scattering off a single nucleon. 
-\begin{figure}
+
+\begin{figure}[h]
   \begin{center}
     \includegraphics[scale=0.7]{kinematics3He.pdf}
     \caption{Kinematics in the center of mass frame and quantum
@@ -152,7 +159,8 @@ scattering off a single nucleon.
     \label{fig:onetwobod}
   \end{center}
 \end{figure}
-The total scattering amplitude off an $A$-body nucleus is given by 
+For scattering off an $A$-body nucleus, the total scattering
+amplitude is given by 
 % \begin{align}
 %   A_{M}^{M^{\prime} }(\bv{k}, \bv{q})&=\binom{A}{1}\left\langle
 %   M^{\prime}\right|\hat{O}_{1}^{}(\bv{k}, \bv{q})\left|M\right
@@ -175,7 +183,7 @@ The total scattering amplitude off an $A$-body nucleus is given by
 \end{align}
 where $\hat{O}_i$ is the $i$-body kernel, $M,M'$ is the spin projection of the
 target nucleus, and there are
-$\binom{A}{i}$ ways for a probe to interact with $i$ nucleons. 
+$\binom{A}{i}$ ways for a probe to hit $i$ nucleons. 
 Fortunately, \ChiEFT provides small dimensionless expansion parameter $\delta\approx 0.4$ \cite{hammer4He} which predicts a
 hierarchy of scales for probe energies greater than
 $\gtrsim 40 \MeV$ \cite{Griesshammer2012, Hildebrandt2005,Hildebrandt2010}.
@@ -265,10 +273,11 @@ The SRG transformation is a unitary transformation that
 shifts the relevant physics into the low-momentum
 region, thereby lowering minimum effective $\LamNN$ in the SRG evolved space.
 This, in turn, significantly improves the convergence rate of calculations for $A=6$ making them actually possible.
+
 The SRG transformation can be thought of as a local averaging or
 smoothing of the potential, resulting in decreased ``resolution''
 as the SRG is applied, however it does this without losing any of the underlying information or compromising the physics.
-\begin{figure}
+\begin{figure}[H]
   \centering
   \begin{subfigure}{0.45\textwidth}
     \centering
@@ -299,6 +308,9 @@ losing much accuracy, whereas the under-evolved potential required at least $\La
 The time complexity is at a minimum proportional to the number of array elements
 present, therefore we gain at least a factor of $(5/2)^2=6.25$ in efficiency;
 in practice the gains are even higher because near-zero values of the potential at large momenta means sparser grids can be used there.
+
+\com{where are you talking about the NCSM as a method to compute 6Li?}\ques{I don't, I didn't feel it was relevant here. We will include it in the next paper.}
+
 The SRG transformation is essential, but it also creates a
 change in the physical meaning of the free variables.
 In fact, any unitary transformation ($U^\dag U =\mathbbm{1}$) also transforms the coordinates:
@@ -318,7 +330,7 @@ depend on physical momenta, and therefore we cannot directly use an SRG
 evolved potential in the non-SRG evolved kernel.
 To solve this, previous work with SRG transformations has transformed the
 Lagrangeans - and therefore the kernels - into the SRG evolved space
-as well.
+as well\ques{get citation}.
 However, in the context of the density formalism this would mean adding SRG
 dependence into the kernel, thereby breaking kernel-density independence. 
 This is undesirable since it means more work for the group developing the kernel;
@@ -332,26 +344,27 @@ Therefore, we developed a method whereby we first perform an SRG, then compute t
 The process of completing the SRG evolution of the potential, solving for the wavefunction,
 and then applying the inverse transformation has parameters that must be fine-tuned, but this
 allows for uncertainty estimation.
-TDA calculations involving an SRG transform are done in the no-core shell model \cite{Zhan2004}.
-This involves the selection of a characteristic width $\omega_H$ and expansion in basis states.
+To solve for the nucleus wavefunction an expansion in the harmonic oscillator basis is used
+\ques{I want to avoid referencing the basis used as much as possible. I only do it here because we need to motivate $\omega_H$. It's fine for the next paper, but too much detail here in my opinion}.
 When expanded to infinite order, this basis forms a complete set,
-however, we truncate this expansion by only including excitations up to $\Ntot$.
-Therefore, we can estimate the convergence of the expansion by comparing calculations for different values of $\Ntot$ 
-since at $\Ntot=\infty$ the associated uncertainty goes to zero.
-The parameter $\LamSRG$ represents the progression of the SRG evolution of the potential, as seen in figure
-\ref{fig:SRGtransform} with $\LamSRG=\infty$ corresponding to no evolution.
-As we will see all of these parameters effect the resulting cross-section. 
+however, we truncate this expansion by including harmonic oscillator excitations up to $\Ntot$.
+Additionally, the harmonic oscillator basis has a characteristic
+width, denoted by $\omega_H$, and finally, the parameter $\LamSRG$
+represents the SRG evolution of the potential, as seen in figure
+\ref{fig:SRGtransform}. $\LamSRG=\infty$ corresponds to no evolution.
+As we will see all of these parameters affect the resulting cross-section. 
+We note that above a certain minimum value uncertainty decreases with increasing
+$\Ntot$, and at $\Ntot=\infty$ the associated uncertainty goes to zero.
 
-Unfortunately the application of the SRG transformation is not strictly unitary, and therefore generates induced many-body forces.
-Our method neglects these forces, so it is essential to test their impact.
-We therefore utilize Compton scattering as a test-bed, and compare results using TDAs calculated with and without the SRG transformation
-before moving to the more inovolved $\LiS$ where we only have access to the SRG transformed TDAs.
-Fortunately figure \ref{fig:SRGConverge4He} shows the uncertainty associated with these induced forces is small.
+Unfortunately the application of the cutoff in the SRG transformation results in it no longer being strictly unitary. 
+Our method neglects the resulting induced many-body  forces, and it is essential to test its impact.
+The $\HeF$ system is the highest nucleon number system we can calculate without using the SRG evolution, therefore in order to prepare for $\LiS$ where we cannot preform the raw calculation, we first assess this method's viability on $\HeF$. 
+Fortunately figure \ref{fig:SRGConverge4He} shows the uncertainty associated with this approach is small.
+
 During the TDA calculation, we obtain the binding energy of the simulated system, which we can use calibrate our parameters through comparison to the known experimental value.
-We determine an optimal 
-$\omega_H$ that yields a good binding energy, while $\Ntot$ is taken as large as feasible.
+We determine an optimal $\omega_H$ that yields a good binding energy, while $\Ntot$ is taken as large as feasible.
 With this benchmark established, we have extended our analysis to $\LiS$, for which only the SRG evolved form is accessible.
-Future investigations \cite{upcoming} will carefully assess the extent to which different $\LamSRG$ values effect results.
+Future investigations \cite{upcoming} will carefully assess the extent to which different $\LamSRG$ values extrapolate to compatible results.
 
 
 \begin{figure}[H]
@@ -368,7 +381,10 @@ We expect the deviation to decrease as $N$ increases, and importantly
 for our analysis, this shows what value of $N$ is required.
 The small error present at high $\Ntot$ is present do to the induced many body forces.
 
-\subsection[Results for lithium 6]{Results for $\LiS$}
+\com{from here on, presentation needs a lot more verbiage and detail -- but I guess you know that}
+
+\com{discuss input: kernels same as in 34He (reference), central values of polarisabilities same as there (aae central values of most recent extractions, reference). Comparison to HIGS data is good/bad/undecided. Will study convergence in detail. Here assumed overall 10\% error as in 34He from potential/cutoff variations plus order-by-order convergence plus numerics plus extrapolations in LambdaSRG/Ntotmax/omegaH,... get inspired by 1-paragraph summary in 4He paper. }
+\subsection{Results for $\LiS$}
 The kernels used for $\LiS$ Compton scattering are the same as Grie{\ss}hammer \etal~ uses in $\HeT$ and $\HeF$ Compton scattering \cite{hammer2020, hammer4He}.
 Long \etal \cite{upcoming} will provide a full  analysis of uncertainty.
 For this analysis an overall $10\%$ uncertainty is assumed in agreement with Grie{\ss}hammer \etal \cite{hammer2020, hammer4He} which accounts for the cutoff $\LamNN$ and $\LamSRG$ variation, 
@@ -379,15 +395,15 @@ the methodology behind this will be discussed in Long \etal \cite{upcoming}.
   \centering
   %\includegraphics[width=\linewidth]{file_path}
   \includegraphics[scale=0.5]{ExpVSTheory-1.pdf}
-  \caption{Compton scattering on $\LiS$ as compared to Myers \etal \cite{60MeV}.
-  }
+  \caption{Compton scattering on $\LiS$ as compared to Myers \etal \cite{60MeV}}
   \label{fig:TheoryVSExperiment}
 \end{figure}
-The data presented here is promising but leaves room for improvement.
-The overall angle dependence of the TDA calculation is correct but the values appear to be off a constant offset. 
-In Long \etal we will conduct a full uncertainty analysis, involving the $\LamNN$ dependence, along with 
-the order by order theory convergence and perhaps most importantly the convergence in the $\LamSRG$ transform.
-Lastly we must note that experimental normalization issues cannot be ruled out.
+The data present does not match the experimental results.
+\ques{What do we say about this? They did have a broken panel.}
+\ques{One/two sentences wraps up this section.}
+\com{preliminary, first in 6LI, promising, leaves room fr improvement -- correct angle dependence, offest? -> exp normalisation issue cannot be ruled out. For theory: need to check order by order convergence, higher order contributions, differenet Lambda, LambdaSRG -- check carefully convergence and extrapolation of SRG evolution (larger LambdaSRG closes gap (induced manybody)? present 10\% error is based on empirics in 34He. Correct LambdaSRG=1.880 fm-1!!}
+
+\com{we use the No Core Shell Model (NCSM) to compute the TDAs~\cite{Andreas papers on NCSM}. In it, omegaH is... Ntotmax is....}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using TDAs in different processes}
 With the TDAs calculated for Compton scattering, we now wish to recycle them for new processes.
@@ -427,7 +443,7 @@ and since we only go up to the two-body kernel this is sufficient for our needs.
 Additionally this reaction kernel has been analyzed by
 Lenkewitz \etal \cite{L2011, L2013} whose result for $\HeT$ we now compare to.
 In particular, we consider the commonly referred to form factors 
-$F_S^{S\pm V}, F_L^{S\pm V}, F_{T/L}^{(a)}-F_{T/L}^{(b)}$, a full description of these formfactors is present in Lenkewitz \etal \cite{L2011}.
+$F_S^{S\pm V}, F_L^{S\pm V}, F_{T/L}^{(a)}-F_T^{(b)}$, a full description of these formfactors is present in Lenkewitz \etal \cite{L2011}.
 Note that here we present only the central values, but upcoming work will provide a full analysis \cite{upcomingPionPhoto}.
 We use the $\chi$SMS potential, whereas Lenkewitz used the AV-18 potential, so it is expected our values will differ slightly.
 \begin{table}[ht]
@@ -436,16 +452,14 @@ We use the $\chi$SMS potential, whereas Lenkewitz used the AV-18 potential, so i
 \hline
 ${}^3\mathrm{He}$ Compton Scattering    & Lenkewitz \etal AV-18 \cite{L2011} & $\chi$SMS TDA calculation\cite{upcomingPionPhoto} \\ \hline\hline
 One-body              &                &                           \\ \hline
-$F_T^{S+V}$           & 0.017(13)(3)   & -0.017$\pm${uncertainty t.b.a}                    \\
-$F_T^{S-V}$           & 1.480(26)(3)   & 1.48   $\pm${uncertainty t.b.a}                   \\
-$F_L^{S+V}$           & -0.079(14)(8)  & -0.005  $\pm${uncertainty t.b.a}                  \\
-$F_L^{S-V}$           & 1.479(26)(8)   & 1.48   $\pm${uncertainty t.b.a}                   \\ \cline{1-1}\hline\hline
+$F_T^{S+V}$           & 0.017(13)(3)   & -0.017\pm\text{error t.b.a}                    \\
+$F_T^{S-V}$           & 1.480(26)(3)   & 1.48                      \\
+$F_L^{S+V}$           & -0.079(14)(8)  & -0.005                    \\
+$F_L^{S-V}$           & 1.479(26)(8)   & 1.48                      \\ \cline{1-1}\hline\hline
 Two-body              &                &                           \\ \hline
-$F_T^{(a)}-F_T^{(b)}$ & -29.3  $\fmin$        & -29.4   $\fmin$  $\pm${uncertainty t.b.a}         \\
-$F_L^{(a)}-F_L^{(b)}$ & -22.9   $\fmin$       & -22.9   $\fmin$    $\pm${uncertainty t.b.a}              \\ \hline
+$F_T^{(a)}-F_T^{(b)}$ & -29.3  $\fmin$        & -29.4   $\fmin$           \\
+$F_L^{(a)}-F_L^{(b)}$ & -22.9   $\fmin$       & -22.9   $\fmin$                  \\ \hline
 \end{tabular}
-
-\caption{$\HeT$ pion photoproduction form factor central values. Full analysis of uncertainty in Long \etal \cite{upcomingPionPhoto} }
 \end{table}
 
 
@@ -456,7 +470,9 @@ We anticipate extending this analysis to finite energy the targets $\HThree, \He
 Once the pion-photoproduction and pion scattering kernels have
 successfully been developed, we will be able to calculate all of
 these reactions on previously analyzed targets in the density
-formalism since we already have produced most of the TDAs required. Our study will complement and expand on work by Braun \etal \cite{Braun} by performing a thorough analysis of theory uncertainties for a range of chiral potentials as well as taking the first step to explore even heavier nuclei with pions.  
+formalism since we already have produced most of the TDAs required. Our study will complement and expand on wor by Braun et al \cite{}. We will perform a thorough analysis of theory uncertainties, including a range of chiral potentials. This will be a first step to explore even heavier nuclei with pions.  
+
+\com{why is this interesting? first study (?) of ChiSym in these processes at heavier nucei. But beware Braun PhD thesis: maybe cite to reflect literature?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
@@ -476,28 +492,36 @@ lowering the effective momentum cutoff, but—when combined with an
 appropriate inverse transformation of the densities—also preserves
 the kernel–density independence that is crucial for the versatility
 of our approach.
-We have presented preliminary results for Compton scattering on
-$\LiS$ which disagrees slightly with data, showing the need for further analysis. 
-We have outlined the ongoing efforts at extending the formalism to other
-reactions, such as pion-photoproduction and pion scattering on light nuclei \cite{upcoming,LongProp}. 
+Furthermore, we have presented preliminary results for Compton scattering on
+% \com{you could write sth like "we presented first and preliminary results on.... Compton 6Li, summarising some key findings of an upcoming publication \cite{} which will also address pols sensitivity, detailed convergence study, detailed study of numerical and theory uncertainties, of world peace,...}
+$\LiS$ which agrees
+\ques{fix this}
+agrees well with data, and we have outlined the ongoing extension of the formalism to other
+reactions, such as pion-photoproduction and pion scattering on light nuclei\ques{fix this}\cite{upcoming} . cite{A. Long, \emph{title}, PhD proposal, Geo Wash U, 2022}%\cite{cite your thesis proposal and upcoming publication!}.
 The ability to plug in different reaction kernels into the same TDA
 framework and vice versa not only enhances the predictive power of our approach but
 also paves the way for a unified treatment of various scattering
 processes in a wide range of few-body systems.
 Ultimately, this framework provides a promising route toward
 high-precision theoretical predictions, deepening our understanding
-of nuclear dynamics in light nuclei. 
-\ques{We wrote here ``More in upcoming articles~\cite{upcoming}....'', what did we mean by this? To me this feels like a good place to end it.}
+of nuclear dynamics in light nuclei. More in upcoming articles~\cite{upcoming}....
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgements}
-We thank Andreas Nogga and Xiang-Xiang Sun of FZ J{\"u}lich, whose work on producing the required TDAs we 
-deeply appreciate. 
-Our appreciation goes out to G.~Feldman of the Myers \etal \cite{60MeV,86MeV} experimental collaboration for information about $\LiS$ Compton experiments. 
-We also thank organisers and participants Chiral Dynamics Bochum.
-This work was supported in part by the US Department of Energy under contract DE-SC0015393.
-Additional funds were provided by an Enhanced Student Travel Award of the Columbian College of Arts and Sciences of George Washington University. 
-The computations of nuclear densities were performed by A.~Nogga and X.-X.~Sun on Jureca of the J{\"u}lich Supercomputing Centre (J{\"u}lich, Germany).
+\com{acknowledgments: Andreas+, supercomputer usage, DOE and DFG grants -- see 4He paper}
+We thank Andreas Nogga and Xiang-Xiang Sun of FZ J{\"u}lich, whose work on produces the required TDAs we 
+deeply appreciate.
+
+G.~Feldman for information about 5Li Compton experiments. 
+
+organisers and participants ChiDyn Bochum
+
+This
+work was supported in part by the US Department of Energy under contract DE-SC0015393.
+Additional
+funds were provided by an Enhanced Student(?) Travel Award of the Columbian College of Arts and Sciences of George Washington University. The computations of
+nuclear densities were performed by A.~Nogga and X.-X.~Sun on Jureca of the J{\"u}lich Supercomputing Centre (J¨ulich,
+Germany).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{thebibliography}{99}
@@ -617,17 +641,7 @@ R. P. Hildebrandt, ``Elastic Compton Scattering from the Nucleon and Deuteron,''
 R. P. Hildebrandt, H. W. Grießhammer, and T. R. Hemmert, ``Nucleon polarizabilities from deuteron Compton scattering within a Green’s function hybrid approach,'' \textit{The European Physical Journal A}, vol. 46, no. 1, pp. 111–137, Sep. 2010. DOI: \href{http://dx.doi.org/10.1140/epja/i2010-11024-y}{10.1140/epja/i2010-11024-y}.
 \bibitem{Beanephotoprod}
 S. R. Beane, V. Bernard, T.-S. H. Lee, U.-G. Meißner, and U. van Kolck, ``Neutral pion photoproduction on deuterium in baryon chiral perturbation theory to order $q^4$,'' \textit{Nuclear Physics A}, vol. 618, no. 4, pp. 381–401, Jun. 1997. DOI: \href{http://dx.doi.org/10.1016/S0375-9474(97)00133-4}{10.1016/S0375-9474(97)00133-4}.
-
-\bibitem{Braun}
-J. Braun, ``Effective Field Theories and Electromagnetic Properties of Light Nuclei,'' Technische University Darmstadt (Germany), Fachbereich Physik, Apr. 24, 2019.
-\bibitem{LongProp}
-Scattering Observables from Few-Body Densities and Application in Light Nuclei, PhD proposal, Geo Wash U, August 2022
-
-\bibitem{Zhan2004}
-H. Zhan, A. Nogga, B. R. Barrett, J. P. Vary, and P. Navrátil, ``Extrapolation method for the no-core shell model,'' \textit{Physical Review C}, vol. 69, no. 3, Mar. 2004. DOI: \href{http://dx.doi.org/10.1103/PhysRevC.69.034302}{10.1103/PhysRevC.69.034302}.
-
 \end{thebibliography}
-
 
 \end{document}
 
